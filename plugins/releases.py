@@ -458,6 +458,8 @@ class KernelReleases():
         # Verify that source, patch, changelog and incremental patch exist
         if source and not os.path.exists('%s/%s' % (self.pub_mount, source)):
             source = None
+        if sign and not os.path.exists('%s/%s' % (self.pub_mount, sign)):
+            sign = None
         if patch and not os.path.exists('%s/%s' % (self.pub_mount, patch)):
             patch = None
         if changelog and not os.path.exists('%s/%s' % (self.pub_mount, changelog)):

@@ -44,7 +44,7 @@
             <td><strong>{{ version }}{% if iseol %} <span class="eolkernel" title="This release is End-of-Life">[EOL]</span>{% endif %}</strong></td>
             <td>{{ isodate }}</td>
             <td>{% if source %}[<a href="{{ SITEURL }}/{{ source }}" title="Download complete tarball">tar.xz</a>]{% endif %}</td>
-	    <td>{% if sign %}[<a href="{{ SITEURL }}/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %}</td>
+            <td>{% if sign %}[<a href="{{ SITEURL }}/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %}</td>
             <td>{% if patch %}[<a href="{{ SITEURL }}/{{ patch }}" title="Download patch to previous mainline">patch</a>]{% endif %}</td>
             <td>{% if patch %}[<a href="https://www.kernel.org/diff/diffview.cgi?file=/{{ patch }}" title="View patch to previous mainline using diffview">view&nbsp;patch</a>]{% endif %} </td>
             <td>{% if incr %}[<a href="https://www.kernel.org/diff/diffview.cgi?file=/{{ incr }}" title="View incremental patch to previous stable release">view&nbsp;inc</a>]{% endif %} </td>
