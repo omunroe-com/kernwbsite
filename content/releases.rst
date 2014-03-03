@@ -40,7 +40,7 @@ Longterm
     ======== ==================== ============ ==================
     Version  Maintainer           Released     Projected EOL
     ======== ==================== ============ ==================
-    3.12     Jiri Slaby           2013-11-03   TBA
+    3.12     Jiri Slaby           2013-11-03   2016
     3.10     Greg Kroah-Hartman   2013-06-30   Sep, 2015
     3.4      Greg Kroah-Hartman   2012-05-20   Oct, 2014
     3.2      Ben Hutchings        2012-01-04   2016
