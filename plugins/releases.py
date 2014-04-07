@@ -75,10 +75,10 @@ class KernelReleases():
         # Move on to the linux-stable repo
         repo = Repo(GIT_STABLE)
         # ignore any tags older than 12 months
-        #cutoff = time.time() - 31536000
-        # Raise to 400 days temporarily while we're waiting for final
-        # 2.6.34 EOL release
-        cutoff = time.time() - 34560000
+        cutoff = time.time() - 31536000
+
+        # EOL cutoff is 30 days
+        eol_cutoff = time.time() - 2592000
 
         tagrefs = self.get_tagref_list(repo, cutoff)
 
@@ -133,22 +133,21 @@ class KernelReleases():
             if mainline_rc is None:
                 releases.append(self.make_release_line(mainline_rel, 'mainline'))
 
-
         releases.append(self.make_release_line(latest_stable, 'stable'))
 
         # add other stable kernels and mark EOL accordingly
-        eolcount = 0
         for rel in stable:
             iseol = False
             for eolrel in EOL_KERNELS:
                 if rel[0].find(eolrel) >= 0:
                     iseol = True
-                    eolcount += 1
                     break
 
-            # limit the number of EOL kernels to 1.
-            if not iseol or (iseol and eolcount <= 1):
-                releases.append(self.make_release_line(rel, 'stable', iseol))
+            # Make sure EOL kernels stick around for max 30 days
+            if iseol and rel[1] < eol_cutoff:
+                continue
+
+            releases.append(self.make_release_line(rel, 'stable', iseol))
 
         # find latest long-term releases
         for rel in LONGTERM_KERNELS:
@@ -161,6 +160,11 @@ class KernelReleases():
                     if found[0].find(eolrel) >= 0:
                         iseol = True
                         break
+
+                if iseol and rel[1] < eol_cutoff:
+                    # Too old to list on the front page
+                    continue
+
                 releases.append(self.make_release_line(found, 'longterm',
                     iseol))
 
