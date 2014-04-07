@@ -161,7 +161,7 @@ class KernelReleases():
                         iseol = True
                         break
 
-                if iseol and rel[1] < eol_cutoff:
+                if iseol and found[1] < eol_cutoff:
                     # Too old to list on the front page
                     continue
 
