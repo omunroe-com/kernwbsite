@@ -43,7 +43,7 @@ Longterm
     3.14     Greg Kroah-Hartman   2014-03-30   Aug, 2016
     3.12     Jiri Slaby           2013-11-03   2016
     3.10     Greg Kroah-Hartman   2013-06-30   Sep, 2015
-    3.4      Greg Kroah-Hartman   2012-05-20   Oct, 2014
+    3.4      Li Zefan             2012-05-20   Sep, 2016
     3.2      Ben Hutchings        2012-01-04   2016
     2.6.32   Willy Tarreau        2009-12-03   Mid-2015
     ======== ==================== ============ ==================
