@@ -56,7 +56,7 @@ Kernel.org accounts are not given away very often, usually you need to
 be making some reasonable amount of contributions to the Linux kernel
 and have a good reason for wanting / needing an account. If you really
 feel that you should have an account please e-mail the following to
-keys@kernel.org:
+helpdesk@kernel.org:
 
 - full name
 - desired username

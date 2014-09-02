@@ -97,8 +97,8 @@ order to verify the signature. Look at the first line of the output and
 note the "key ID" listed, which in our example is ``6092693E``. Now
 download this key from the key servers::
 
-    $ gpg --recv-keys 6092693E
-    gpg: requesting key 6092693E from hkp server subkeys.pgp.net
+    $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 6092693E
+    gpg: requesting key 6092693E from hkp server keys.gnupg.net
     gpg: key 6092693E: public key "Greg Kroah-Hartman 
          (Linux kernel stable release signing key) <greg@kroah.com>" imported
     gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
