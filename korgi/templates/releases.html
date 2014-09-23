@@ -38,18 +38,18 @@
         </table>
 
         <table id="releases">
-        {% for (label, version, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb) in current_releases %}
+        {% for (label, version, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview) in current_releases %}
         <tr align="left">
             <td>{{ label }}:</td>
             <td><strong>{{ version }}{% if iseol %} <span class="eolkernel" title="This release is End-of-Life">[EOL]</span>{% endif %}</strong></td>
             <td>{{ isodate }}</td>
-            <td>{% if source %}[<a href="{{ SITEURL }}/{{ source }}" title="Download complete tarball">tar.xz</a>]{% endif %}</td>
-            <td>{% if sign %}[<a href="{{ SITEURL }}/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %}</td>
-            <td>{% if patch %}[<a href="{{ SITEURL }}/{{ patch }}" title="Download patch to previous mainline">patch</a>]{% endif %}</td>
-            <td>{% if patch %}[<a href="https://www.kernel.org/diff/diffview.cgi?file=/{{ patch }}" title="View patch to previous mainline using diffview">view&nbsp;patch</a>]{% endif %} </td>
-            <td>{% if incr %}[<a href="https://www.kernel.org/diff/diffview.cgi?file=/{{ incr }}" title="View incremental patch to previous stable release">view&nbsp;inc</a>]{% endif %} </td>
-            <td>{% if gitweb %}[<a href="{{ gitweb }}" title="Browse the git tree using the web interface">cgit</a>] {% endif %}</td>
-            <td>{% if changelog %}[<a href="{{ SITEURL }}/{{ changelog }}" title="View detailed change logs">changelog</a>]{% endif %}</td>
+            <td>{% if source %}[<a href="{{ SITEURL }}/{{ source }}" title="Download complete tarball">tar.xz</a>]{% endif %} </td>
+            <td>{% if sign %}[<a href="{{ SITEURL }}/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %} </td>
+            <td>{% if patch %}[<a href="{{ SITEURL }}/{{ patch }}" title="Download patch to previous mainline">patch</a>]{% endif %} </td>
+            <td>{% if incr %}[<a href="{{ SITEURL }}/{{ incr }}" title="Download incremental patch">inc. patch</a>]{% endif %} </td>
+            <td>{% if diffview %}[<a href="{{ diffview }}" title="View diff in cgit">view diff</a>]{% endif %} </td>
+            <td>{% if gitweb %}[<a href="{{ gitweb }}" title="Browse the git tree using cgit">browse</a>] {% endif %} </td>
+            <td>{% if changelog %}[<a href="{{ SITEURL }}/{{ changelog }}" title="View detailed change logs">changelog</a>]{% endif %} </td>
         </tr>
         {% endfor %}
         </table>

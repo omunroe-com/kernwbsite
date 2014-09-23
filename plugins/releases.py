@@ -227,7 +227,7 @@ class KernelReleases():
         fh.close()
 
     def send_release_email(self, chunks):
-        (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb) = chunks
+        (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview) = chunks
         if iseol:
             eol = ' (EOL)'
         else:
@@ -251,10 +251,12 @@ class KernelReleases():
                 + "\r\n"
                 + "... where <your_email_address> is the email address you used to subscribe\r\n"
                 + "to this list.\r\n"
-                + "-----------------------------------------------------------------------------\r\n"
-                + "\r\n"
+                + "-----------------------------------------------------------------------------\r\n")
+
+        if diffview is not None:
+            body += ("\r\n"
                 + "You can view the summary of the changes at the following URL:\r\n"
-                + "https://www.kernel.org/diff/diffview.cgi?file=/%s\r\n" % patch)
+                + "%s\r\n" % diffview)
 
         msg = MIMEText(body)
         msg['Subject'] = "Linux kernel %s released" % release
@@ -276,7 +278,7 @@ class KernelReleases():
         # Put release info into a .json file for easy import and parse
         out = {'releases': []}
         for entry in self.current_releases:
-            (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb) = entry
+            (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview) = entry
 
             if source:
                 source = 'https://www.kernel.org/%s' % source
@@ -304,7 +306,8 @@ class KernelReleases():
                     'incremental': incr,
                 },
                 'changelog': changelog,
-                'gitweb': gitweb
+                'gitweb': gitweb,
+                'diffview': diffview
             }
 
             out['releases'].append(relhash)
@@ -355,7 +358,7 @@ class KernelReleases():
             creator='FTP Admin <ftpadmin@kernel.org>'
         )
         for entry in self.current_releases:
-            (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb) = entry
+            (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview) = entry
 
             if iseol:
                 eol = ' (EOL)'
@@ -451,6 +454,95 @@ class KernelReleases():
 
         return path
 
+    def _get_prev_release(self, release, label):
+        # Returns (previous mainline, previous incremental)
+        # for 3.17-rc2:  (3.16, 3.17-rc1)
+        # for 3.16.2:    (3.16, 3.16.1)
+        # for 2.6.32.63: (2.6.32, 2.6.32.62)
+        # for 3.17-rc1:  (3.16, None)
+        # for 3.17:      (3.16, None)
+        # for 3.16.1:    (3.16, None)
+
+        if release.find('next') != -1:
+            # Futile for next kernels, as we have to look at actual tags
+            return None, None
+
+        bits = release.split('.')
+
+        if len(bits) < 2:
+            # What happen? Someone set up us something weird.
+            return None, None
+
+        mainline = None
+        incremental = None
+
+        if label.find('mainline') == 0:
+            # Does the last bit have '-rc' in it?
+            if bits[-1].find('-rc') > 0:
+                rcbits = bits[-1].split('-rc')
+                try:
+                    lastbit = int(rcbits.pop(-1))
+                    mainlbit = int(rcbits.pop(-1))
+
+                    if lastbit > 1:
+                        # We have an incremental
+                        prevbit = str(lastbit - 1)
+                        prevrc = '%s-rc%s' % (mainlbit, prevbit)
+                        newbits = bits[:-1] + [prevrc]
+                        incremental = '.'.join(newbits)
+                    # Now arrive at mainline
+                    if mainlbit == 0:
+                        # We're looking at 4.0-rcX, then. Cowardly bail out with only incremental
+                        return None, incremental
+                    prevbit = str(mainlbit - 1)
+                    newbits = bits[:-1] + [prevbit]
+                    mainline = '.'.join(newbits)
+
+                except ValueError:
+                    pass
+
+                return mainline, incremental
+
+            # First, most unusual case -- a mainline release ending in .0
+            try:
+                lastbit = int(bits.pop(-1))
+                if lastbit == 0:
+                    # We can't really figure out what the previous release was based on this info, so
+                    # we cowardly pretend it didn't happen
+                    return None, None
+
+                prevbit = str(lastbit - 1)
+                bits.append(prevbit)
+                mainline = '.'.join(bits)
+            except ValueError:
+                # Not sure what happened, but let's pretend it didn't work
+                return None, None
+            
+            return mainline, incremental
+
+        # Not a mainline kernel, so a simpler logic
+        try:
+            lastbit = int(bits.pop(-1))
+            # Combining the remaining bits gives us mainline
+            mainline = '.'.join(bits)
+
+            if lastbit > 1:
+                prevbit = str(lastbit - 1)
+                bits.append(prevbit)
+                incremental = '.'.join(bits)
+            else:
+                # We don't have a previous incremental in this case
+                incremental = None
+
+            return mainline, incremental
+
+        except ValueError:
+            # Not sure what happened, but let's pretend it didn't work
+            return None, None
+
+        return None, None
+
+
     def make_release_line(self, rel, label, iseol=False):
         # drop the leading 'v':
         if rel[0][0] == 'v':
@@ -467,6 +559,7 @@ class KernelReleases():
         incr = None
         changelog = None
         gitweb = None
+        diffview = None
 
         if release.find('next') != 0:
             # next don't have anything besides a tag
@@ -475,29 +568,35 @@ class KernelReleases():
             sign = self._get_sign_path_by_version(release)
             patch = self._get_patch_path_by_version(release)
 
+            prevmainline, previncremental = self._get_prev_release(release, label)
+
             if label.find('stable') == 0 or label.find('longterm') == 0:
                 dirpath = self._get_release_dir_by_version(release)
                 changelog = '%s/ChangeLog-%s' % (dirpath, release)
-                gitweb = ('https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/log/?id=refs/tags/v%s'
-                          % release)
-                # incr patches are named incr/3.5.(X-1)-(X).xz, which we calculate here
-                try:
-                    bits = release.split('.')
-                    lastbit = int(bits.pop(-1))
-                    if lastbit > 1:
-                        prevbit = str(lastbit - 1)
-                        bits.append(prevbit)
-                        prevrel = '.'.join(bits)
-                        incr = '%s/incr/patch-%s-%s.xz' % (dirpath, prevrel, lastbit)
-                except ValueError:
-                    incr = None
+                cgitpath = 'https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git'
+                gitweb = ('%s/log/?id=refs/tags/v%s' % (cgitpath, release))
 
+                # incr patches are named incr/3.5.(X-1)-(X).xz
+                if previncremental:
+                    lastbit = release.split('.')[-1]
+                    incr = '%s/incr/patch-%s-%s.xz' % (dirpath, previncremental, lastbit)
+                    diffview = '%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, previncremental)
+                elif prevmainline:
+                    # diffview to previous mainline
+                    diffview = ('%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, prevmainline))
+                        
             elif label.find('mainline') == 0:
-                gitweb = ('https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/log/?id=refs/tags/v%s'
-                          % release)
+                cgitpath = 'https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git'
+                gitweb = '%s/log/?id=refs/tags/v%s' % (cgitpath, release)
+                if previncremental:
+                    diffview = '%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, previncremental)
+                elif prevmainline:
+                    diffview = ('%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, prevmainline))
 
         else:
             gitweb = 'https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/log/?id=refs/tags/%s' % release
+            # Not offering a diffview, as it's too hard to calculate
+            diffview = None
 
         # Verify that source, patch, changelog and incremental patch exist
         if source and not os.path.exists('%s/%s' % (self.pub_mount, source)):
@@ -513,7 +612,7 @@ class KernelReleases():
 
         # This needs to be refactored into a hash. In my defense,
         # it started with 3 entries.
-        return label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb
+        return label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview
 
     def get_tagref_list(self, repo, cutoff=None):
         tagrefs = []
