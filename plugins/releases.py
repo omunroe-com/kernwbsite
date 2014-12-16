@@ -114,7 +114,10 @@ class KernelReleases():
             if regex in seen:
                 continue
 
-            stable.append(self.find_latest_matching(matched, regex))
+            latest_matching = self.find_latest_matching(matched, regex)
+            if latest_matching is not None:
+                stable.append(latest_matching)
+
             seen.append(regex)
 
         stable = sorted(stable, key=lambda tagged: int(tagged[0].split('.')[1]), reverse=True)
