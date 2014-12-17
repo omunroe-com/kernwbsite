@@ -5,8 +5,40 @@
  */
 
 @import "normalize.css";
-@import "https://fonts.googleapis.com/css?family=Oxygen";
-@import "https://fonts.googleapis.com/css?family=Oswald:400";
+
+/**
+ * To use Google-hosted versions, use the following instead of @font-face
+ * definitions below.
+ *
+ * @import "https://fonts.googleapis.com/css?family=Oxygen";
+ * @import "https://fonts.googleapis.com/css?family=Oswald:400";
+ *
+ * We use locally-stored copies to avoid slowdowns in places like mainland
+ * China, where all access to Google is really slow.
+ */
+@font-face {
+    font-family: 'oswald';
+    src: url('../fonts/oswald-regular-webfont.eot');
+    src: url('../fonts/oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oswald-regular-webfont.woff2') format('woff2'),
+         url('../fonts/oswald-regular-webfont.woff') format('woff'),
+         url('../fonts/oswald-regular-webfont.ttf') format('truetype'),
+         url('../fonts/oswald-regular-webfont.svg#oswaldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'oxygen';
+    src: url('../fonts/oxygen-regular-webfont.eot');
+    src: url('../fonts/oxygen-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oxygen-regular-webfont.woff2') format('woff2'),
+         url('../fonts/oxygen-regular-webfont.woff') format('woff'),
+         url('../fonts/oxygen-regular-webfont.ttf') format('truetype'),
+         url('../fonts/oxygen-regular-webfont.svg#oxygenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     font-family: oxygen,sans-serif;
