@@ -68,7 +68,7 @@ body {
     float: right;
 }
 #banner h1 {
-    margin: 0 0 0.45em;
+    margin: 28px 0 47px .05em;
     text-shadow: 3px 3px 0 #F8F4EE;
     font-size: 3em;
 }
@@ -146,14 +146,14 @@ hr {
 }
 #latest td {
     text-align: center;
-    vertical-align: middle;
+    vertical-align: top;
 }
 #latest_label {
     font-size: 1.25em;
-    padding: 0.5em 0 0;
+    padding: 0.75em 0 .3em 0;
 }
 #latest_button {
-    padding: 0 0 0.4em 1.2em;
+    padding: 0 0 0.75em 1.2em;
 }
 #latest_button > a {
     display: block;
@@ -166,7 +166,7 @@ hr {
 #latest_link {
     font-size: 2.75em;
     font-weight: bold;
-    padding: 0 0.6em 0.2em 0;
+    padding: .35em 0.6em 0 0;
 }
 #latest_link > a {
     color: #4C3D00;
@@ -214,7 +214,7 @@ hr {
 #content {
     background: #FFFFFF;
     margin: 1.5em auto;
-    padding: 1em;
+    padding: 1.85em 1em;
     width: 50em;
     border: thin solid;
     border-color: #DDDACF #CCC8B8 #BBB59F;
@@ -224,7 +224,7 @@ hr {
 
 article h1 {
     color: #33290A;
-    margin: 0;
+    margin: 0 0 .9em 0;
 }
 article h1 > a {
     color: #33290A !important;
@@ -289,7 +289,7 @@ a.readmore:active {
 #extras > .blogroll {
     float: left;
     width: 34em;
-    padding: 0 1em;
+    padding: .5em 1em 0 1em;
 }
 #extras > .blogroll li {
     width: 33%;
@@ -298,10 +298,10 @@ a.readmore:active {
 #extras > .social {
     float: right;
     width: 12em;
-    padding: 0 1em;
+    padding: .5em 1em 0 1em;
 }
 #extras h2 {
-    margin: 0.5em 0;
+    margin: 0.5em 0 1em 0;
 }
 #extras ul {
     list-style: none;
