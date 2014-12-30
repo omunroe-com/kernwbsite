@@ -583,18 +583,18 @@ class KernelReleases():
                 if previncremental:
                     lastbit = release.split('.')[-1]
                     incr = '%s/incr/patch-%s-%s.xz' % (dirpath, previncremental, lastbit)
-                    diffview = '%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, previncremental)
+                    diffview = '%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, previncremental)
                 elif prevmainline:
                     # diffview to previous mainline
-                    diffview = ('%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, prevmainline))
-                        
+                    diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
+
             elif label.find('mainline') == 0:
                 cgitpath = 'https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git'
                 gitweb = '%s/log/?id=refs/tags/v%s' % (cgitpath, release)
                 if previncremental:
-                    diffview = '%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, previncremental)
+                    diffview = '%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, previncremental)
                 elif prevmainline:
-                    diffview = ('%s/diff/?id=v%s&id2=v%s' % (cgitpath, release, prevmainline))
+                    diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
 
         else:
             gitweb = 'https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/log/?id=refs/tags/%s' % release
