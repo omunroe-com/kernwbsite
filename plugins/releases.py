@@ -120,7 +120,9 @@ class KernelReleases():
 
             seen.append(regex)
 
-        stable = sorted(stable, key=lambda tagged: int(tagged[0].split('.')[1]), reverse=True)
+        # hackish, but works -- we make numbers a float and sort by them
+        # e.g. v4.0.1 vs v3.19.2 becomes a comparison of .401 and .3192
+        stable = sorted(stable, key=lambda tagged: float('.' + tagged[0].replace('.', '')[1:]), reverse=True)
 
         releases = []
 
@@ -192,6 +194,7 @@ class KernelReleases():
 
     def check_release_tracker(self):
         if 'PELICAN_DRYRUN' in os.environ.keys():
+            print 'PELICAN_DRYRUN found, not doing release tracking'
             return
 
         import socket
