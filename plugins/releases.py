@@ -333,12 +333,9 @@ class KernelReleases():
             label = chunks[0]
             release = chunks[1]
             iseol = chunks[2]
+            line = ''
 
-            if label == 'mainline':
-                line = ' 3'
-            elif label == 'linux-next':
-                line = ''
-            else:
+            if label not in ('mainline', 'linux-next'):
                 bits = release.split('.')
                 bits.pop(-1)
                 line = ' ' + '.'.join(bits)
