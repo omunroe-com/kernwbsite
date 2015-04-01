@@ -1,0 +1,21 @@
+Hurr, Durr Im'a Sheep
+=====================
+
+:category: Site news
+
+Linus named the upcoming 4.0 release of the kernel "Hurr Durr I'ma
+Sheep" (see his `git commit`_), so we are celebrating this April Fool's
+day with a minor prank. If you've been redirected to
+`imasheep.hurrdurr.org`_, do not panic. It's all part of the joke.
+
+We've also restored all FTP and Rsync access to the
+`mirrors.kernel.org`_ servers, as we seem to have resolved our SSD
+and dm_cache problems. If you're still using FTP, however, please
+consider switching to HTTP. FTP is a protocol designed for a different
+era -- these days everyone should be avoiding it for `multiple
+reasons`_.
+
+.. _`git commit`: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c517d838eb7d07bbe9507871fab3931deccff539
+.. _`imasheep.hurrdurr.org`: https://imasheep.hurrdurr.org/
+.. _`mirrors.kernel.org`: https://mirrors.kernel.org/
+.. _`multiple reasons`: http://mywiki.wooledge.org/FtpMustDie
