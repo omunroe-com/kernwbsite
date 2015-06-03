@@ -47,9 +47,9 @@ validate keys: `Using trust to validate keys`_.
 
 In order to become part of the kernel.org web of trust, you should
 locate kernel.org members in your geographical area, then verify and
-sign their keys. To locate members of kernel.org in your area, you can
-either use the `Google Map`_ created for this purpose, or send an email
-to the users@kernel.org mailing list, requesting key signing.
+cross-sign your keys. To locate members of kernel.org in your area, you
+can use the `Google Map`_ created for this purpose, or you may attend a
+`Linux kernel development conference`_ and join a key signing event.
 
 Once you have verified and signed a few keys, you can use the trust
 relationship established in the process to verify other keys used in the
@@ -58,6 +58,7 @@ kernel.org web of trust.
 .. _`Wikipedia article`: https://en.wikipedia.org/wiki/Web_of_trust
 .. _`Using trust to validate keys`: http://www.gnupg.org/gph/en/manual.html#AEN385
 .. _`Google Map`: https://j.mp/kgpgmap
+.. _`Linux kernel development conference`: http://events.linuxfoundation.org/
 
 Using GnuPG to verify kernel signatures
 ---------------------------------------
