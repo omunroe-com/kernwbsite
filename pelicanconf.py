@@ -18,7 +18,7 @@ FILENAME_METADATA = u'.*(?P<date>\d{4}-\d{2}-\d{2}).*'
 #ARTICLE_SAVE_AS = u'posts/{date:%Y}-{date:%m}-{date:%d}/{slug}.html'
 
 # Dirs to always push to site
-STATIC_PATHS = (['corporate', 'images'])
+STATIC_PATHS = (['corporate', 'images', 'news/images'])
 
 import sys
 sys.path.append('./')

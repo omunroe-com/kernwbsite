@@ -1,0 +1,25 @@
+Introducing Fastly CDN
+======================
+
+:category: Site news
+
+.. image:: |filename|images/fastly-logo.png
+  :height: 60px
+  :width: 156px
+  :alt: Fastly logo
+  :align: left
+
+We are happy to announce that Fastly_ has offered their worldwide CDN
+network to provide fast download services for Linux kernel releases,
+which should improve download speeds for those of you located outside
+North America. We have modified the front page to offer CDN-powered
+download links, but all the existing URLs should continue to work.
+
+If you would like to avoid using the CDN, you can just substitute "cdn"
+for "www" in the URL to get the tarball directly from kernel.org
+servers. As always, please use `PGP Signature Verification`_ for all
+files downloaded from kernel.org in order to make sure that the contents
+have not been modified in transit.
+
+.. _Fastly: https://fastly.com/
+.. _`PGP Signature Verification`: https://kernel.org/signature.html

@@ -29,10 +29,10 @@
         </tr>
         <tr>
             <td id="latest_button">
-                <a href="{{ SITEURL }}/{{ latest_release[5] }}"><img src="{{ SITEURL }}/theme/images/icons/downloadarrow_small.png" width="48" height="48" border="0" alt="Download"/></a>
+                <a href="https://cdn.kernel.org/{{ latest_release[5] }}"><img src="{{ SITEURL }}/theme/images/icons/downloadarrow_small.png" width="48" height="48" border="0" alt="Download"/></a>
             </td>
             <td id="latest_link">
-                <a href="{{ SITEURL }}/{{ latest_release[5] }}">{{ latest_release[1] }}</a>
+                <a href="https://cdn.kernel.org/{{ latest_release[5] }}">{{ latest_release[1] }}</a>
             </td>
         </tr>
         </table>
@@ -43,13 +43,13 @@
             <td>{{ label }}:</td>
             <td><strong>{{ version }}{% if iseol %} <span class="eolkernel" title="This release is End-of-Life">[EOL]</span>{% endif %}</strong></td>
             <td>{{ isodate }}</td>
-            <td>{% if source %}[<a href="{{ SITEURL }}/{{ source }}" title="Download complete tarball">tar.xz</a>]{% endif %} </td>
-            <td>{% if sign %}[<a href="{{ SITEURL }}/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %} </td>
-            <td>{% if patch %}[<a href="{{ SITEURL }}/{{ patch }}" title="Download patch to previous mainline">patch</a>]{% endif %} </td>
-            <td>{% if incr %}[<a href="{{ SITEURL }}/{{ incr }}" title="Download incremental patch">inc.&nbsp;patch</a>]{% endif %} </td>
+            <td>{% if source %}[<a href="https://cdn.kernel.org/{{ source }}" title="Download complete tarball">tar.xz</a>]{% endif %} </td>
+            <td>{% if sign %}[<a href="https://cdn.kernel.org/{{ sign }}" title="Download PGP verification signature">pgp</a>] {% endif %} </td>
+            <td>{% if patch %}[<a href="https://cdn.kernel.org/{{ patch }}" title="Download patch to previous mainline">patch</a>]{% endif %} </td>
+            <td>{% if incr %}[<a href="https://cdn.kernel.org/{{ incr }}" title="Download incremental patch">inc.&nbsp;patch</a>]{% endif %} </td>
             <td>{% if diffview %}[<a href="{{ diffview }}" title="View diff in cgit">view&nbsp;diff</a>]{% endif %} </td>
             <td>{% if gitweb %}[<a href="{{ gitweb }}" title="Browse the git tree using cgit">browse</a>] {% endif %} </td>
-            <td>{% if changelog %}[<a href="{{ SITEURL }}/{{ changelog }}" title="View detailed change logs">changelog</a>]{% endif %} </td>
+            <td>{% if changelog %}[<a href="https://cdn.kernel.org/{{ changelog }}" title="View detailed change logs">changelog</a>]{% endif %} </td>
         </tr>
         {% endfor %}
         </table>
