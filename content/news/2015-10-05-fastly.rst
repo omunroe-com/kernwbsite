@@ -15,11 +15,10 @@ which should improve download speeds for those of you located outside
 North America. We have modified the front page to offer CDN-powered
 download links, but all the existing URLs should continue to work.
 
-If you would like to avoid using the CDN, you can just substitute "cdn"
-for "www" in the URL to get the tarball directly from kernel.org
-servers. As always, please use `PGP Signature Verification`_ for all
-files downloaded from kernel.org in order to make sure that the contents
-have not been modified in transit.
+If you would like to avoid using Fastly, you can simply change the URL
+to have "www.kernel.org" instead of "cdn.kernel.org". As always, please
+use `PGP Signature Verification`_ for all downloaded files regardless of
+where you got them.
 
 .. _Fastly: https://fastly.com/
 .. _`PGP Signature Verification`: https://kernel.org/signature.html
