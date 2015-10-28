@@ -40,6 +40,7 @@ Longterm
     ======== ==================== ============ ==================
     Version  Maintainer           Released     Projected EOL
     ======== ==================== ============ ==================
+    4.4      Greg Kroah-Hartman   early 2016   Feb, 2018
     4.1      Greg Kroah-Hartman   2015-06-21   Sep, 2017
     3.18     Sasha Levin          2014-12-07   Jan, 2017
     3.14     Greg Kroah-Hartman   2014-03-30   Aug, 2016
