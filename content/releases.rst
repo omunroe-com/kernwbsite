@@ -48,7 +48,6 @@ Longterm
     3.10     Greg Kroah-Hartman   2013-06-30   End of 2015
     3.4      Li Zefan             2012-05-20   Sep, 2016
     3.2      Ben Hutchings        2012-01-04   May, 2018
-    2.6.32   Willy Tarreau        2009-12-03   Early 2016
     ======== ==================== ============ ==================
 
 Distribution kernels
