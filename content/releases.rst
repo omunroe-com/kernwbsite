@@ -44,7 +44,7 @@ Longterm
     4.1      Sasha Levin          2015-06-21   Sep, 2017
     3.18     Sasha Levin          2014-12-07   Jan, 2017
     3.14     Greg Kroah-Hartman   2014-03-30   Aug, 2016
-    3.12     Jiri Slaby           2013-11-03   2016
+    3.12     Jiri Slaby           2013-11-03   Jan, 2017
     3.10     Greg Kroah-Hartman   2013-06-30   End of 2015
     3.4      Li Zefan             2012-05-20   Sep, 2016
     3.2      Ben Hutchings        2012-01-04   May, 2018
