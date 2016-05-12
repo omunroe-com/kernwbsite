@@ -15,7 +15,7 @@ and is made available to you under the
 Distributed software is copyrighted by their respective contributors and
 are distributed under their own individual licenses.
 
-.. _`Creative Commons Attribution ShareAlike 4.0 International License`: http://creativecommons.org/licenses/by-sa/4.0/
+.. _`Creative Commons Attribution ShareAlike 4.0 International License`: https://creativecommons.org/licenses/by-sa/4.0/
 
 Legal Disclaimer
 ----------------

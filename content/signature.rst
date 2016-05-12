@@ -56,7 +56,7 @@ relationship established in the process to verify other keys used in the
 kernel.org web of trust.
 
 .. _`Wikipedia article`: https://en.wikipedia.org/wiki/Web_of_trust
-.. _`Using trust to validate keys`: http://www.gnupg.org/gph/en/manual.html#AEN385
+.. _`Using trust to validate keys`: https://www.gnupg.org/gph/en/manual.html#AEN385
 .. _`Google Map`: https://j.mp/kgpgmap
 .. _`Linux kernel development conference`: http://events.linuxfoundation.org/
 

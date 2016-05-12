@@ -43,4 +43,4 @@ Use in violation of any applicable laws is prohibited.
 Linux is a Registered Trademark of Linus Torvalds. All trademarks are
 property of their respective owners.
 
-.. _`Bureau of Industry and Security`: http://www.bis.doc.gov/
+.. _`Bureau of Industry and Security`: https://www.bis.doc.gov/

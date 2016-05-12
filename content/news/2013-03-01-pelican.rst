@@ -16,6 +16,6 @@ that used to work with gitweb no longer works for you with cgit, please
 drop us a note at webmaster@kernel.org.
 
 .. _Pelican: http://docs.getpelican.com/
-.. _cgit: http://git.zx2c4.com/cgit/
+.. _cgit: https://git.zx2c4.com/cgit/
 .. _`browsing git repositories`: https://git.kernel.org/cgit/
-.. _`git repository`: http://git.kernel.org/?p=docs/kernel/website.git;a=summary
+.. _`git repository`: https://git.kernel.org/?p=docs/kernel/website.git;a=summary

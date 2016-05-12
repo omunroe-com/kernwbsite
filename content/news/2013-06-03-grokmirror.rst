@@ -30,7 +30,7 @@ dependencies on your mirror server:
 
   * GitPython_
 
-.. _GitPython: http://pypi.python.org/pypi/GitPython/
+.. _GitPython: https://pypi.python.org/pypi/GitPython/
 
 Setting up a kernel.org mirror
 ------------------------------

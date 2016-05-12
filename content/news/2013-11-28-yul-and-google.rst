@@ -31,4 +31,4 @@ across all kernel.org sites, offering higher protection against
 eavesdropping.
 
 
-.. _`Vexxhost, Inc`: http://vexxhost.com
+.. _`Vexxhost, Inc`: https://vexxhost.com

@@ -30,7 +30,7 @@ called a distribution of Linux, which is a complete Linux system. There
 are numerous distributions available for download on the Internet as
 well as for purchase from various vendors; some are general-purpose, and
 some are optimized for specific uses. We currently have mirrors of
-several distributions available at http://mirrors.kernel.org/.
+several distributions available at https://mirrors.kernel.org/.
 
 Note, however, that most distributions are very large (several
 gigabytes), so unless you have a fast Internet link you may want to save
@@ -45,8 +45,8 @@ vger.kernel.org_. Please read the FAQ_ before subscribing.
 
 Although there is no official archive site, unofficial archives of the list can be found at:
 
-- http://lkml.org/
-- http://marc.info/?l=linux-kernel
+- https://lkml.org/
+- https://marc.info/?l=linux-kernel
 
 .. _vger.kernel.org: http://vger.kernel.org/
 .. _FAQ: http://www.tux.org/lkml/

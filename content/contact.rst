@@ -22,16 +22,16 @@ addresses. We do not have the resources to reply to them.**
 
 Please try the following sites for general Linux help:
 
-* http://superuser.com/ - for computer enthusiasts and power users
-* http://serverfault.com/ - for systems administrators
-* http://askubuntu.com/ - for users of Ubuntu Linux
+* https://superuser.com/ - for computer enthusiasts and power users
+* https://serverfault.com/ - for systems administrators
+* https://askubuntu.com/ - for users of Ubuntu Linux
 
 Linux Foundation also offers training opportunities if you are
 interested in learning more about Linux, want to become a more
 proficient Linux systems administrator, or want to know more about how
 Linux can help your company succeed.
 
-* http://training.linuxfoundation.org/
+* https://training.linuxfoundation.org/
 
 Mailing address
 ---------------

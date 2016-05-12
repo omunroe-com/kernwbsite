@@ -42,8 +42,8 @@ LINKS =  (
     ('Bugzilla', 'https://bugzilla.kernel.org/'),
     ('Patchwork', 'https://patchwork.kernel.org/'),
     ('Kernel Mailing Lists', 'http://vger.kernel.org/'),
-    ('Mirrors', 'http://mirrors.kernel.org/'),
-    ('Linux.com', 'http://www.linux.com/'),
+    ('Mirrors', 'https://mirrors.kernel.org/'),
+    ('Linux.com', 'https://www.linux.com/'),
     ('Linux Foundation', 'http://www.linuxfoundation.org/'),
     ('Kernel Planet', 'http://planet.kernel.org/'),
 )

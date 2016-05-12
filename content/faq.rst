@@ -14,7 +14,7 @@ Software as defined by the `Free Software Foundation`_. You may read the
 entire copy of the license in the COPYING_ file distributed with each
 release of the Linux kernel.
 
-.. _`Free Software Foundation`: http://www.fsf.org/
+.. _`Free Software Foundation`: https://www.fsf.org/
 .. _COPYING: /pub/linux/kernel/COPYING
 
 What does "stable/EOL" and "longterm" mean?
@@ -126,7 +126,7 @@ Where can I find kernel 2.4.20-3.16?
 ------------------------------------
 Kernel version numbers of this form are distribution kernels, meaning
 they are modified kernels produced by distributions. Please contact the
-relevant distributor; or check out http://mirrors.kernel.org/.
+relevant distributor; or check out https://mirrors.kernel.org/.
 
 See the Releases_ page for more info on distribution kernels.
 
