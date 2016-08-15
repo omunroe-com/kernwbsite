@@ -1,7 +1,7 @@
 Linux kernel releases PGP signatures
 ====================================
 
-:date: 2013-01-01
+:date: 2016-08-15
 :slug: signature
 :category: Signatures
 
@@ -66,52 +66,47 @@ All software released via kernel.org has corresponding PGP signatures.
 It should not be possible to upload any files to the kernel.org mirrors
 without providing a trusted PGP signature to go along with them.
 
-To better illustrate the verification process, let's use Linux 3.1.5
+To better illustrate the verification process, let's use Linux 4.6.6
 release as a walk-through example. First, use "``wget``" or "``curl
 -O``" to download the release and the corresponding signature::
 
-    $ wget https://www.kernel.org/pub/linux/kernel/v3.0/linux-3.1.5.tar.xz
-    $ wget https://www.kernel.org/pub/linux/kernel/v3.0/linux-3.1.5.tar.sign
+    $ wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.xz
+    $ wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.sign
 
 You will notice that the signature is made against the uncompressed
 version of the archive. This is done so there is only one signature
-required for .gz, .bz2 and .xz compressed versions of the release. Start
+required for .gz and .xz compressed versions of the release. Start
 by uncompressing the archive, using ``unxz`` in our case::
 
-    $ unxz linux-3.1.5.tar.xz
-    
+    $ unxz linux-4.6.6.tar.xz
+
 Now verify the .tar archive against the signature::
 
-    $ gpg --verify linux-3.1.5.tar.sign
+    $ gpg2 --verify linux-4.6.6.tar.sign
 
 You can combine these steps into a one-liner::
 
-    $ xz -cd linux-3.1.5.tar.xz | gpg --verify linux-3.1.5.tar.sign -
+    $ xz -cd linux-4.6.6.tar.xz | gpg2 --verify linux-4.6.6.tar.sign -
 
 The likely output will be::
 
-    gpg: Signature made Fri 09 Dec 2011 12:16:46 PM EST using RSA key ID 6092693E
-    gpg: Can't check signature: public key not found
-    
+    gpg: Signature made Wed 10 Aug 2016 06:55:15 AM EDT using RSA key ID 38DBBDC86092693E
+    gpg: Can't check signature: No public key
+
 You will need to first download the public key from the PGP keyserver in
 order to verify the signature. Look at the first line of the output and
-note the "key ID" listed, which in our example is ``6092693E``. Now
+note the "key ID" listed, which in our example is ``38DBBDC86092693E``. Now
 download this key from the key servers::
 
-    $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 6092693E
-    gpg: requesting key 6092693E from hkp server keys.gnupg.net
-    gpg: key 6092693E: public key "Greg Kroah-Hartman 
-         (Linux kernel stable release signing key) <greg@kroah.com>" imported
-    gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
-    gpg: depth: 0  valid:   3  signed:   1  trust: 0-, 0q, 0n, 0m, 0f, 3u
-    gpg: depth: 1  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 1f, 0u
+    $ gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 38DBBDC86092693E
+    gpg: key 38DBBDC86092693E: public key "Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>" imported
     gpg: Total number processed: 1
-    gpg:               imported: 1  (RSA: 1)
+    gpg:               imported: 1
 
-Let's rerun "``gpg --verify``"::
+Let's rerun "``gpg2 --verify``"::
 
-    $ gpg --verify linux-3.1.5.tar.sign 
-    gpg: Signature made Fri 09 Dec 2011 12:16:46 PM EST using RSA key ID 6092693E
+    $ gpg2 --verify linux-4.6.6.tar.sign
+    gpg: Signature made Wed 10 Aug 2016 06:55:15 AM EDT using RSA key ID 38DBBDC86092693E
     gpg: Good signature from "Greg Kroah-Hartman 
          (Linux kernel stable release signing key) <greg@kroah.com>"
     gpg: WARNING: This key is not certified with a trusted signature!
@@ -133,6 +128,30 @@ Kroah-Hartman). There are several ways you can do this:
    different domains). Ask them to confirm that they have signed the key
    in question. You should attach at best marginal trust to the
    responses you receive in this manner (if you receive any).
+3. Use the following site to see trust paths from Linus Torvalds' key to
+   the key used to sign the tarball: `pgp.cs.uu.nl`_. Put Linus's key
+   into the "from" field and the key you got in the output above into
+   the "to" field. Normally, only Linus or people with Linus's direct
+   signature will be in charge of releasing kernels. Here's the example
+   `from Linus Torvalds to Greg Kroah-Hartman`_.
+
+Here are key fingerprints for Linus Torvalds and Greg Kroah-Hartman, who
+are most likely to be releasing kernels:
+
+.. table::
+
+    ================== ==================================================
+    Developer          Fingerprint
+    ================== ==================================================
+    Linus Torvalds     ABAF 11C6 5A29 70B1 30AB  E3C4 79BE 3E43 0041 1886
+    Greg Kroah-Hartman 647F 2865 4894 E3BD 4571  99BE 38DB BDC8 6092 693E
+    ================== ==================================================
+
+Please verify the TLS certificate for this site in your browser before
+trusting the above information.
+
+.. _`pgp.cs.uu.nl`: https://pgp.cs.uu.nl/mk_path.cgi?STAT=ABAF11C65A2970B130ABE3C479BE3E4300411886
+.. _`from Linus Torvalds to Greg Kroah-Hartman`: https://pgp.cs.uu.nl/mk_path.cgi?FROM=ABAF11C65A2970B130ABE3C479BE3E4300411886&TO=647F28654894E3BD457199BE38DBBDC86092693E&PATHS=trust+paths
 
 If you get "BAD signature"
 --------------------------
