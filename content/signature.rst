@@ -140,12 +140,12 @@ are most likely to be releasing kernels:
 
 .. table::
 
-    ================== ==================================================
+    ================== ======================================================
     Developer          Fingerprint
-    ================== ==================================================
-    Linus Torvalds     ABAF 11C6 5A29 70B1 30AB  E3C4 79BE 3E43 0041 1886
-    Greg Kroah-Hartman 647F 2865 4894 E3BD 4571  99BE 38DB BDC8 6092 693E
-    ================== ==================================================
+    ================== ======================================================
+    Linus Torvalds     ``ABAF 11C6 5A29 70B1 30AB  E3C4 79BE 3E43 0041 1886``
+    Greg Kroah-Hartman ``647F 2865 4894 E3BD 4571  99BE 38DB BDC8 6092 693E``
+    ================== ======================================================
 
 Please verify the TLS certificate for this site in your browser before
 trusting the above information.
