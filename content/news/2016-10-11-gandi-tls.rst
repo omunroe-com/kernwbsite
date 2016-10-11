@@ -1,0 +1,24 @@
+Gandi.net TLS certificates
+==========================
+
+:category: Site news
+
+.. image:: |filename|images/gandi-logo.png
+  :height: 60px
+  :width: 202px
+  :alt: Gandi logo
+  :align: left
+
+If your browser alerted you that the site certificates have changed,
+that would be because we replaced our StartCOM, Ltd certificates with
+those offered by our DNS registrar, Gandi_. We are very thankful to
+Gandi for this opportunity.
+
+A common question is why we aren't using the certificates offered by the
+`Let's Encrypt project`_, and the answer is that there are several
+technical hurdles (on our end) that currently make it complicated. Once
+we resolve them, we will most likely switch to using certificates issued
+by our fellow Linux Foundation project.
+
+.. _Gandi: https://gandi.net/
+.. _`Let's Encrypt project`: https://letsencrypt.org/
