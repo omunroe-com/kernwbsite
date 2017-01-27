@@ -1,0 +1,39 @@
+Shutting down FTP services
+==========================
+
+:category: Site news
+
+Those of you who have been around for a while may remember a time when
+you used to be able to mount kernel.org directly as a partition on your
+system using NFS (or even SMB/CIFS). The Wayback Machine shows that this
+was still advertised some time in `January 1998`_, but was removed by
+the time the `December 1998`_ copy was made.
+
+Let's face it -- while kinda neat and convenient, offering a public
+NFS/CIFS server was a Pretty Bad Idea, not only because both these
+protocols are pretty terrible over high latency connections, but also
+because of important security implications.
+
+Well, 19 years later we're thinking it's time to terminate another
+service that has important protocol and security implications -- our
+FTP servers. Our decision is driven by the following considerations:
+
+- The protocol is inefficient and requires adding awkward kludges to
+  firewalls and load-balancing daemons
+- FTP servers have no support for caching or accelerators, which has
+  significant performance impacts
+- Most software implementations have stagnated and see infrequent updates
+
+All kernel.org FTP services will be shut down by the end of this year.
+In hopes to minimise the potential disruption, we will be doing it in
+two stages:
+
+1. ftp://ftp.kernel.org/ service will be terminated on March 1, 2017
+2. ftp://mirrors.kernel.org/ service will be terminated on December 1, 2017
+
+If you have any concerns, please feel free to contact
+ftpadmin@kernel.org (ah, the irony).
+
+.. _`January 1998`: https://web.archive.org/web/19980130085039/http://www.kernel.org/
+.. _`December 1998`: https://web.archive.org/web/19981212030306/http://www.kernel.org/
+
