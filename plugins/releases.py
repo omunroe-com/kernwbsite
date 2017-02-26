@@ -24,6 +24,8 @@ import re
 
 from git import Repo
 
+from distutils.version import StrictVersion
+
 from pelican import signals, utils
 
 from feedgenerator import Rss201rev2Feed
@@ -100,7 +102,7 @@ class KernelReleases():
             # does it match a longterm release?
             ignore = False
             for ver in LONGTERM_KERNELS:
-                if tagref.name.find(ver) == 1:
+                if tagref.name.find(ver+'.') == 1:
                     # this is a long-term release, ignore
                     ignore = True
                     continue
@@ -120,9 +122,7 @@ class KernelReleases():
 
             seen.append(regex)
 
-        # hackish, but works -- we make numbers a float and sort by them
-        # e.g. v4.0.1 vs v3.19.2 becomes a comparison of .401 and .3192
-        stable = sorted(stable, key=lambda tagged: float('.' + tagged[0].replace('.', '')[1:]), reverse=True)
+        stable = sorted(stable, key=lambda x: StrictVersion(x[0][1:]), reverse=True)
 
         releases = []
 
