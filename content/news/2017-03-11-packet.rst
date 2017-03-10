@@ -1,0 +1,52 @@
+Fast new frontends with Packet
+==============================
+
+:category: Site news
+
+.. image:: |filename|images/packet-logo.png
+  :height: 60px
+  :width: 176px
+  :alt: Packet logo
+  :align: left
+
+We are extremely happy to announce that Packet_ has graciously donated
+the new hardware systems providing read-only public access to the
+kernel.org git repositories and the public website (git.kernel.org and
+www.kernel.org, respectively). We have avoided using cloud providers in
+the past due to security implications of sharing hypervisor memory with
+external parties, but Packet's hardware-based single-tenant approach
+satisfies our security requirements while taking over the burden of
+setting up and managing the physical hardware in multiple worldwide
+datacenters.
+
+As of March 11, 2017, the four new public frontends are located in the
+following geographical locations:
+
+- San Jose, California, USA
+- Parsippany, New Jersey, USA
+- Amsterdam, Netherlands
+- Tokyo, Japan
+
+We have changed our DNS configuration to support GeoDNS, so your
+requests should be routed to the frontend nearest to you.
+
+Each Packet-hosted system is `significantly more powerful`_ than our
+previous generation frontends and have triple the amount of available
+RAM, so they should be a lot more responsive even when a lot of people
+are cloning linux.git simultaneously.
+
+Our special thanks to the following organizations who have graciously
+donated hosting for the previous incarnation of kernel.org frontends:
+
+- `Internet Systems Consortium`_
+- Vexxhost_
+- Tizen_
+
+If you notice any problems with the new systems, please email
+helpdesk@kernel.org.
+
+.. _Packet: https://www.packet.net/
+.. _`significantly more powerful`: https://www.packet.net/bare-metal/servers/type-2-virtualization/
+.. _`Internet Systems Consortium`: https://www.isc.ca/
+.. _Vexxhost: https://www.vexxhost.com/
+.. _Tizen: https://www.tizen.org/
