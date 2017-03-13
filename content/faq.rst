@@ -161,5 +161,5 @@ It is hard to predict with certainty, but you can either take a peek at
 Corbet provides a broad forecast of what will likely be included into
 the next mainline release.
 
-.. _`linux-next`: https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/
+.. _`linux-next`: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/
 .. _`Linux Weather Forecast`: http://www.linuxfoundation.org/news-media/lwf

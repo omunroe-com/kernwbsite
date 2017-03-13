@@ -576,7 +576,7 @@ class KernelReleases():
             if label.find('stable') == 0 or label.find('longterm') == 0:
                 dirpath = self._get_release_dir_by_version(release)
                 changelog = '%s/ChangeLog-%s' % (dirpath, release)
-                cgitpath = 'https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git'
+                cgitpath = 'https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git'
                 gitweb = ('%s/log/?id=refs/tags/v%s' % (cgitpath, release))
 
                 # incr patches are named incr/3.5.(X-1)-(X).xz
@@ -589,7 +589,7 @@ class KernelReleases():
                     diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
 
             elif label.find('mainline') == 0:
-                cgitpath = 'https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git'
+                cgitpath = 'https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
                 gitweb = '%s/log/?id=refs/tags/v%s' % (cgitpath, release)
                 if previncremental:
                     diffview = '%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, previncremental)
@@ -597,7 +597,7 @@ class KernelReleases():
                     diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
 
         else:
-            gitweb = 'https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/log/?id=refs/tags/%s' % release
+            gitweb = 'https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/log/?id=refs/tags/%s' % release
             # Not offering a diffview, as it's too hard to calculate
             diffview = None
 
