@@ -40,8 +40,9 @@ Please send any mail correspondence to the Linux Foundation:
     .. line-block::
 
         The Linux Foundation
-        660 York Street, Suite 102
-        San Francisco, CA 94110
+        1 Letterman Drive
+        Building D, Suite D4700
+        San Francisco, CA 94129
         Phone/Fax: +1 415 723 9709
 
 .. _FAQ: |filename|faq.rst
