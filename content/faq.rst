@@ -145,6 +145,15 @@ browsing the Linux Kernel Mailing List.
 
 .. _`Kernel Newbies`: http://kernelnewbies.org/
 
+What happened to ftp.kernel.org?
+--------------------------------
+FTP service was terminated on March 1, 2017. All content that used to be
+available via ftp.kernel.org can be accessed by browsing
+https://www.kernel.org/pub/. If you would like to use a command-line
+tool for accessing these files, you can do so with lftp:
+
+    lftp https://www.kernel.org/pub
+
 When will the next kernel be released?
 --------------------------------------
 The next kernel will be released when it is ready. There is no strict
