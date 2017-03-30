@@ -24,13 +24,14 @@ import re
 
 from git import Repo
 
+import requests
+
 from distutils.version import StrictVersion
 
 from pelican import signals, utils
 
 from feedgenerator import Rss201rev2Feed
 import json
-
 
 # Pelican plugin API
 def register():
@@ -46,7 +47,6 @@ def fetch_kernel_releases(gen, metadata):
     gen.context['current_releases'] = gen.releases_instance.current_releases
     gen.context['latest_release'] = gen.releases_instance.latest_release
 
-
 class KernelReleases():
     def __init__(self, generator):
         self.release_tracker = '/var/lib/mirror/release-tracker.json'
@@ -54,6 +54,8 @@ class KernelReleases():
         self.rss_path = os.path.join(generator.output_path, 'feeds', 'kdist.xml')
         self.finger_path = os.path.join(generator.output_path, 'finger_banner')
         self.json_path = os.path.join(generator.output_path, 'releases.json')
+
+        self.reqs = requests.Session()
 
         settings = generator.settings
 
@@ -63,8 +65,6 @@ class KernelReleases():
 
         LONGTERM_KERNELS = settings.get('LONGTERM_KERNELS')
         EOL_KERNELS = settings.get('EOL_KERNELS')
-
-        self.pub_mount = settings.get('PUB_MOUNT')
 
         repo = Repo(GIT_MAINLINE)
         tagrefs = self.get_tagref_list(repo)
@@ -191,6 +191,10 @@ class KernelReleases():
         self.generate_finger_banner()
         self.generate_releases_json()
         self.check_release_tracker()
+
+    def check_url_exists(self, path):
+        r = self.reqs.head('https://www.kernel.org/%s' % path)
+        return r.status_code == 200
 
     def check_release_tracker(self):
         if 'PELICAN_DRYRUN' in os.environ.keys():
@@ -601,16 +605,12 @@ class KernelReleases():
             # Not offering a diffview, as it's too hard to calculate
             diffview = None
 
-        # Verify that source, patch, changelog and incremental patch exist
-        if source and not os.path.exists('%s/%s' % (self.pub_mount, source)):
-            source = None
-        if sign and not os.path.exists('%s/%s' % (self.pub_mount, sign)):
-            sign = None
-        if patch and not os.path.exists('%s/%s' % (self.pub_mount, patch)):
+        # Verify that patch, changelog and incremental patch exist
+        if patch and not self.check_url_exists(patch):
             patch = None
-        if changelog and not os.path.exists('%s/%s' % (self.pub_mount, changelog)):
+        if changelog and not self.check_url_exists(changelog):
             changelog = None
-        if incr and not os.path.exists('%s/%s' % (self.pub_mount, incr)):
+        if incr and not self.check_url_exists(incr):
             incr = None
 
         # This needs to be refactored into a hash. In my defense,
@@ -641,30 +641,36 @@ class KernelReleases():
             # Ignore this check for next-YYYYMMDD kernels
             source = self._get_source_path_by_version(tagname[1:])
 
-            if not os.path.exists('%s/%s' % (self.pub_mount, source)):
+            if not self.check_url_exists(source):
                 return False
 
         return True
 
-    def find_latest_matching(self, tagrefs, regex, check_tarball=True):
+    def find_latest_matching(self, tagrefs, regex, blacklist=[]):
         current = None
 
         for tagref in tagrefs:
-            tdate = tagref.tag.tagged_date
-
             # Does it match the regex?
             if not regex.match(tagref.name):
                 continue
 
+            if tagref.name in blacklist:
+                continue
+
+            tdate = tagref.tag.tagged_date
+
             # is it older than current?
             if current is None or current.tag.tagged_date < tdate:
-                if not self._check_tarball_by_tagname(tagref.name):
-                    continue
-
                 current = tagref
 
         if current is None:
             return None
+
+        if not self._check_tarball_by_tagname(current.name):
+            # Tarball for the latest tag does not exist.
+            # Add it to blacklist and try again.
+            blacklist.append(current.name)
+            return self.find_latest_matching(tagrefs, regex, blacklist)
 
         return current.name, current.tag.tagged_date
 

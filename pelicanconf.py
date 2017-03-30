@@ -20,6 +20,7 @@ FILENAME_METADATA = u'.*(?P<date>\d{4}-\d{2}-\d{2}).*'
 # Dirs to always push to site
 STATIC_PATHS = (['corporate', 'images', 'news/images'])
 
+import os
 import sys
 sys.path.append('./')
 from plugins import releases
@@ -27,11 +28,14 @@ from plugins import releases
 LONGTERM_KERNELS = ('4.9', '4.4', '4.1', '3.18', '3.16', '3.14', '3.12', '3.10', '3.4', '3.2')
 EOL_KERNELS = ('3.14', '3.18', '3.19', '4.0', '4.2', '4.3', '4.5', '4.6', '4.7', '4.8')
 
-GIT_MAINLINE = '/mnt/git-repos/repos/pub/scm/linux/kernel/git/torvalds/linux.git'
-GIT_STABLE   = '/mnt/git-repos/repos/pub/scm/linux/kernel/git/stable/linux-stable.git'
-GIT_NEXT     = '/mnt/git-repos/repos/pub/scm/linux/kernel/git/next/linux-next.git'
+if 'GIT_REPOS' in os.environ.keys():
+    GIT_REPOS = os.environ['GIT_REPOS']
+else:
+    GIT_REPOS = '/mnt/git-repos/repos'
 
-PUB_MOUNT = '/mnt'
+GIT_MAINLINE = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/torvalds/linux.git')
+GIT_STABLE   = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/stable/linux-stable.git')
+GIT_NEXT     = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/next/linux-next.git')
 
 PLUGINS = [releases]
 
