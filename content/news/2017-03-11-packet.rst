@@ -47,6 +47,6 @@ helpdesk@kernel.org.
 
 .. _Packet: https://www.packet.net/
 .. _`significantly more powerful`: https://www.packet.net/bare-metal/servers/type-2-virtualization/
-.. _`Internet Systems Consortium`: https://www.isc.ca/
+.. _`Internet Systems Consortium`: https://www.isc.org/
 .. _Vexxhost: https://www.vexxhost.com/
 .. _Tizen: https://www.tizen.org/
