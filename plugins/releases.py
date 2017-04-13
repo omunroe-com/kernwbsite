@@ -243,7 +243,7 @@ class KernelReleases():
 
         import smtplib
         from email.mime.text import MIMEText
-        from email.Utils import COMMASPACE, formatdate, make_msgid
+        from email.Utils import COMMASPACE, formatdate
 
         announce_list = 'linux-kernel-announce@vger.kernel.org'
         smtp_server = 'mail.kernel.org'
@@ -280,7 +280,8 @@ class KernelReleases():
         msg['From'] = 'Linux Kernel Distribution System <kdist@linux.kernel.org>'
         msg['To'] = announce_list
         msg['Date'] = formatdate(localtime=True)
-        msg['Message-Id'] = make_msgid('kdist.linux.kernel.org')
+        msg['Message-Id'] = '%s.release-%s@kdist.linux.kernel.org' % (
+            datetime.date.strftime(datetime.datetime.now(), '%Y%m%d%H%M%S'), release)
         msg['X-Linux-Kernel-Version'] = release
         msg['X-Linux-Kernel-Patch-URL'] = "https://www.kernel.org/%s" % patch
         msg['X-Linux-Kernel-Full-URL'] = "https://www.kernel.org/%s" % source
