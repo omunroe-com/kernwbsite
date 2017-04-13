@@ -203,10 +203,7 @@ class KernelReleases():
             return
 
         import socket
-        send_mail = False
-
-        if socket.gethostname() == 'fe-sync.int.kernel.org':
-            send_mail = True
+        send_mail = True
 
         # Load known releases from the release tracker file
         known = []
