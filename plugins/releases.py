@@ -49,7 +49,6 @@ def fetch_kernel_releases(gen, metadata):
 
 class KernelReleases():
     def __init__(self, generator):
-        self.release_tracker = '/var/lib/mirror/release-tracker.json'
 
         self.rss_path = os.path.join(generator.output_path, 'feeds', 'kdist.xml')
         self.finger_path = os.path.join(generator.output_path, 'finger_banner')
@@ -65,6 +64,8 @@ class KernelReleases():
 
         LONGTERM_KERNELS = settings.get('LONGTERM_KERNELS')
         EOL_KERNELS = settings.get('EOL_KERNELS')
+
+        self.release_tracker = settings.get('RELEASE_TRACKER')
 
         repo = Repo(GIT_MAINLINE)
         tagrefs = self.get_tagref_list(repo)
