@@ -247,6 +247,15 @@ class KernelReleases():
         from email.mime.text import MIMEText
         from email.Utils import COMMASPACE, formatdate, make_msgid
 
+        announce_list = 'linux-kernel-announce@vger.kernel.org'
+        smtp_server = 'mail.kernel.org'
+
+        # This allows us to run tests in pre-prod
+        if 'ANNOUNCE_LIST' in os.environ.keys():
+            announce_list = os.environ['ANNOUNCE_LIST']
+        if 'SMTP_SERVER' in os.environ.keys():
+            smtp_server = os.environ['SMTP_SERVER']
+
         body = ("Linux kernel version %s%s has been released. It is available from:\r\n" % (release, eol)
                 + "\r\n"
                 + "Patch:          https://www.kernel.org/%s\r\n" % patch
@@ -271,17 +280,15 @@ class KernelReleases():
         msg = MIMEText(body)
         msg['Subject'] = "Linux kernel %s released" % release
         msg['From'] = 'Linux Kernel Distribution System <kdist@linux.kernel.org>'
-        msg['To'] = 'linux-kernel-announce@vger.kernel.org'
-        msg['Bcc'] = 'ftpadmin@kernel.org'
+        msg['To'] = announce_list
         msg['Date'] = formatdate(localtime=True)
         msg['Message-Id'] = make_msgid('kdist.linux.kernel.org')
         msg['X-Linux-Kernel-Version'] = release
         msg['X-Linux-Kernel-Patch-URL'] = "https://www.kernel.org/%s" % patch
         msg['X-Linux-Kernel-Full-URL'] = "https://www.kernel.org/%s" % source
 
-        s = smtplib.SMTP('mail.kernel.org')
-        s.sendmail('kdist@linux.kernel.org', ['linux-kernel-announce@vger.kernel.org', 'ftpadmin@kernel.org'],
-                   msg.as_string())
+        s = smtplib.SMTP(smtp_server)
+        s.sendmail('kdist@linux.kernel.org', [announce_list,], msg.as_string())
         s.quit()
 
     def generate_releases_json(self):
