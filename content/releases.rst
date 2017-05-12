@@ -44,7 +44,6 @@ Longterm
     4.4      Greg Kroah-Hartman   2016-01-10   Feb, 2018
     4.1      Sasha Levin          2015-06-21   Sep, 2017
     3.16     Ben Hutchings        2014-08-03   Apr, 2020
-    3.12     Jiri Slaby           2013-11-03   May, 2017
     3.10     Willy Tarreau        2013-06-30   Oct, 2017
     3.4      Li Zefan             2012-05-20   Apr, 2017
     3.2      Ben Hutchings        2012-01-04   May, 2018
