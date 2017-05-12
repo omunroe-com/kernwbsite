@@ -54,6 +54,9 @@ class KernelReleases():
         self.finger_path = os.path.join(generator.output_path, 'finger_banner')
         self.json_path = os.path.join(generator.output_path, 'releases.json')
 
+        self.gitsite = 'https://git.kernel.org'
+        self.wwwsite = 'https://cdn.kernel.org'
+
         self.reqs = requests.Session()
 
         settings = generator.settings
@@ -193,8 +196,8 @@ class KernelReleases():
         self.generate_releases_json()
         self.check_release_tracker()
 
-    def check_url_exists(self, path):
-        r = self.reqs.head('https://www.kernel.org/%s' % path)
+    def check_url_exists(self, url):
+        r = self.reqs.head(url)
         return r.status_code == 200
 
     def check_release_tracker(self):
@@ -256,9 +259,9 @@ class KernelReleases():
 
         body = ("Linux kernel version %s%s has been released. It is available from:\r\n" % (release, eol)
                 + "\r\n"
-                + "Patch:          https://www.kernel.org/%s\r\n" % patch
-                + "Full source:    https://www.kernel.org/%s\r\n" % source
-                + "PGP Signature:  https://www.kernel.org/%s\r\n" % sign
+                + "Patch:          %s\r\n" % patch
+                + "Full source:    %s\r\n" % source
+                + "PGP Signature:  %s\r\n" % sign
                 + "\r\n"
                 + "-----------------------------------------------------------------------------\r\n"
                 + "This is an automatically generated message. To unsubscribe from this list,\r\n"
@@ -283,8 +286,8 @@ class KernelReleases():
         msg['Message-Id'] = '<%s.release-%s@kdist.linux.kernel.org>' % (
             datetime.date.strftime(datetime.datetime.now(), '%Y%m%d%H%M%S'), release)
         msg['X-Linux-Kernel-Version'] = release
-        msg['X-Linux-Kernel-Patch-URL'] = "https://www.kernel.org/%s" % patch
-        msg['X-Linux-Kernel-Full-URL'] = "https://www.kernel.org/%s" % source
+        msg['X-Linux-Kernel-Patch-URL'] = patch
+        msg['X-Linux-Kernel-Full-URL'] = source
 
         s = smtplib.SMTP(smtp_server)
         s.sendmail('kdist@linux.kernel.org', [announce_list,], msg.as_string())
@@ -295,17 +298,6 @@ class KernelReleases():
         out = {'releases': []}
         for entry in self.current_releases:
             (label, release, iseol, timestamp, isodate, source, sign, patch, incr, changelog, gitweb, diffview) = entry
-
-            if source:
-                source = 'https://www.kernel.org/%s' % source
-            if sign:
-                sign = 'https://www.kernel.org/%s' % sign
-            if patch:
-                patch = 'https://www.kernel.org/%s' % patch
-            if incr:
-                incr = 'https://www.kernel.org/%s' % incr
-            if changelog:
-                changelog = 'https://www.kernel.org/%s' % changelog
 
             relhash = {
                 'moniker': label,
@@ -386,22 +378,22 @@ class KernelReleases():
 
             if source:
                 contents += '''
-                <tr><th align="right">Source:</th><td><a href="https://www.kernel.org/%s">linux-%s.tar.xz</a></td></tr>''' % (source, release)
+                <tr><th align="right">Source:</th><td><a href="%s">%s</a></td></tr>''' % (source, os.path.basename(source))
 
             if sign:
                 contents += '''
-                <tr><th align="right">PGP Signature:</th><td><a href="https://www.kernel.org/%s">linux-%s.tar.sign</a></td></tr>''' % (sign, release)
+                <tr><th align="right">PGP Signature:</th><td><a href="%s">%s</a></td></tr>''' % (sign, os.path.basename(sign))
 
             if patch:
                 contents += '''
-                <tr><th align="right">Patch:</th><td><a href="https://www.kernel.org/%s">patch-%s.xz</a>''' % (patch, release)
+                <tr><th align="right">Patch:</th><td><a href="%s">full</a>''' % patch
                 if incr:
-                    contents += ''' (<a href="https://www.kernel.org/%s">Incremental</a>)''' % incr
+                    contents += ''' (<a href="%s">incremental</a>)''' % incr
                 contents += '''</td></tr>'''
 
             if changelog:
                 contents += '''
-                <tr><th align="right">ChangeLog:</th><td><a href="https://www.kernel.org/%s">ChangeLog-%s</a></td></tr>''' % (changelog, release)
+                <tr><th align="right">ChangeLog:</th><td><a href="%s">%s</a></td></tr>''' % (changelog, os.path.basename(changelog))
 
             contents += '''
             </table>'''
@@ -451,19 +443,19 @@ class KernelReleases():
 
     def _get_source_path_by_version(self, version):
         dirpath = self._get_release_dir_by_version(version)
-        path = '%s/linux-%s.tar.xz' % (dirpath, version)
+        path = '%s/%s/linux-%s.tar.xz' % (self.wwwsite, dirpath, version)
 
         return path
 
     def _get_sign_path_by_version(self, version):
         dirpath = self._get_release_dir_by_version(version)
-        path = '%s/linux-%s.tar.sign' % (dirpath, version)
+        path = '%s/%s/linux-%s.tar.sign' % (self.wwwsite, dirpath, version)
 
         return path
 
     def _get_patch_path_by_version(self, version):
         dirpath = self._get_release_dir_by_version(version)
-        path = '%s/patch-%s.xz' % (dirpath, version)
+        path = '%s/%s/patch-%s.xz' % (self.wwwsite, dirpath, version)
 
         return path
 
@@ -585,39 +577,49 @@ class KernelReleases():
 
             if label.find('stable') == 0 or label.find('longterm') == 0:
                 dirpath = self._get_release_dir_by_version(release)
-                changelog = '%s/ChangeLog-%s' % (dirpath, release)
-                cgitpath = 'https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git'
-                gitweb = ('%s/log/?id=refs/tags/v%s' % (cgitpath, release))
+                changelog = '%s/%s/ChangeLog-%s' % (self.wwwsite, dirpath, release)
+                cgitpath = 'stable/linux-stable'
+                gitweb = '%s/%s/h/v%s' % (self.gitsite, cgitpath, release)
 
                 # incr patches are named incr/3.5.(X-1)-(X).xz
                 if previncremental:
                     lastbit = release.split('.')[-1]
-                    incr = '%s/incr/patch-%s-%s.xz' % (dirpath, previncremental, lastbit)
-                    diffview = '%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, previncremental)
+                    incr = '%s/%s/incr/patch-%s-%s.xz' % (self.wwwsite, dirpath, previncremental, lastbit)
+                    diffview = '%s/%s/ds/v%s/v%s' % (self.gitsite, cgitpath, release, previncremental)
                 elif prevmainline:
                     # diffview to previous mainline
-                    diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
+                    diffview = '%s/%s/ds/v%s/v%s' % (self.gitsite, cgitpath, release, prevmainline)
 
             elif label.find('mainline') == 0:
-                cgitpath = 'https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
-                gitweb = '%s/log/?id=refs/tags/v%s' % (cgitpath, release)
+                cgitpath = 'torvalds'
+                gitweb = '%s/%s/h/v%s' % (self.gitsite, cgitpath, release)
+                # if it's an -rc kernel, link to tarball and patch generated by cgit
+                if release.find('-rc') > 0:
+                    # -rc kernel tarball/patches are cgit-generated and have no signatures
+                    sign = None
+                    source = '%s/%s/t/linux-%s.tar.gz' % (self.gitsite, cgitpath, release)
+                    patch = '%s/%s/p/v%s/v%s' % (self.gitsite, cgitpath, release, prevmainline)
+                    if previncremental:
+                        incr = '%s/%s/p/v%s/v%s' % (self.gitsite, cgitpath, release, previncremental)
+
                 if previncremental:
-                    diffview = '%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, previncremental)
+                    diffview = '%s/%s/ds/v%s/v%s' % (self.gitsite, cgitpath, release, previncremental)
                 elif prevmainline:
-                    diffview = ('%s/diff/?id=v%s&id2=v%s&dt=2' % (cgitpath, release, prevmainline))
+                    diffview = '%s/%s/ds/v%s/v%s' % (self.gitsite, cgitpath, release, prevmainline)
 
         else:
-            gitweb = 'https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/log/?id=refs/tags/%s' % release
+            gitweb = '%s/next/linux-next/h/%s' % (self.gitsite, release)
             # Not offering a diffview, as it's too hard to calculate
             diffview = None
 
-        # Verify that patch, changelog and incremental patch exist
-        if patch and not self.check_url_exists(patch):
-            patch = None
-        if changelog and not self.check_url_exists(changelog):
-            changelog = None
-        if incr and not self.check_url_exists(incr):
-            incr = None
+        # if not -rc kernels, verify that patch, changelog and incremental patch exist
+        if not release.find('-rc'):
+            if patch and not self.check_url_exists(patch):
+                patch = None
+            if changelog and not self.check_url_exists(changelog):
+                changelog = None
+            if incr and not self.check_url_exists(incr):
+                incr = None
 
         # This needs to be refactored into a hash. In my defense,
         # it started with 3 entries.
@@ -643,8 +645,8 @@ class KernelReleases():
 
     def _check_tarball_by_tagname(self, tagname):
         # Only check those starting with "v"
-        if tagname[0] == 'v':
-            # Ignore this check for next-YYYYMMDD kernels
+        if tagname[0] == 'v' and not tagname.find('-rc'):
+            # Ignore this check for -rc and next-YYYYMMDD kernels
             source = self._get_source_path_by_version(tagname[1:])
 
             if not self.check_url_exists(source):
