@@ -23,7 +23,5 @@ merely tar header changes. You can find them in the same v4.x directory:
 
 - https://www.kernel.org/pub/linux/kernel/v4.x/
 
-Our apologies for this problem.
-
-Regards,
-Konstantin
+Our apologies for this problem and thanks to Brad Spengler and everyone
+else who alerted us about this issue.
