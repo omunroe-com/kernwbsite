@@ -613,7 +613,7 @@ class KernelReleases():
             diffview = None
 
         # if not -rc kernels, verify that patch, changelog and incremental patch exist
-        if not release.find('-rc'):
+        if release.find('-rc') < 0:
             if patch and not self.check_url_exists(patch):
                 patch = None
             if changelog and not self.check_url_exists(changelog):
@@ -645,7 +645,7 @@ class KernelReleases():
 
     def _check_tarball_by_tagname(self, tagname):
         # Only check those starting with "v"
-        if tagname[0] == 'v' and not tagname.find('-rc'):
+        if tagname[0] == 'v' and tagname.find('-rc') < 0:
             # Ignore this check for -rc and next-YYYYMMDD kernels
             source = self._get_source_path_by_version(tagname[1:])
 
