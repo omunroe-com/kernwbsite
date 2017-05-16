@@ -20,7 +20,7 @@ the "``git archive``" command (we'll use 4.12-rc1 in these examples)::
   cd linux
   git verify-tag v4.12-rc1
   git archive --format=tar.gz --prefix=linux-4.12-rc1/ \
-    -o linux-4.12.tar.gz v4.12-rc1
+    -o linux-4.12-rc1.tar.gz v4.12-rc1
 
 The upside of this method is that during the "``git verify-tag``" step
 you will check the PGP signature on the tag to make sure that what you
