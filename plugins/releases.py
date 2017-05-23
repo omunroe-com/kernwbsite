@@ -225,8 +225,8 @@ class KernelReleases():
             release = chunks[1]
             if release not in known:
                 # This appears to be a new release.
-                if chunks[5] is None or chunks[6] is None or chunks[7] is None:
-                    # Don't announce anything that doesn't have source, patch or sign.
+                if chunks[5] is None:
+                    # Don't announce anything that doesn't have source.
                     continue
 
                 known.append(release)
@@ -259,22 +259,18 @@ class KernelReleases():
 
         body = ("Linux kernel version %s%s has been released. It is available from:\r\n" % (release, eol)
                 + "\r\n"
-                + "Patch:          %s\r\n" % patch
-                + "Full source:    %s\r\n" % source
-                + "PGP Signature:  %s\r\n" % sign
-                + "\r\n"
-                + "-----------------------------------------------------------------------------\r\n"
-                + "This is an automatically generated message. To unsubscribe from this list,\r\n"
-                + "please send a message to majordomo@vger.kernel.org containing the line:\r\n"
-                + "\r\n"
-                + "\tunsubscribe linux-kernel-announce <your_email_address>\r\n"
-                + "\r\n"
-                + "... where <your_email_address> is the email address you used to subscribe\r\n"
-                + "to this list.\r\n"
-                + "-----------------------------------------------------------------------------\r\n")
+                + "Full source:    %s" % source)
+
+        if patch is not None:
+            body += ("\r\n"
+                + "Patch:          %s" % patch)
+
+        if sign is not None:
+            body += ("\r\n"
+                + "PGP Signature:  %s" % sign)
 
         if diffview is not None:
-            body += ("\r\n"
+            body += ("\r\n\r\n"
                 + "You can view the summary of the changes at the following URL:\r\n"
                 + "%s\r\n" % diffview)
 
@@ -286,8 +282,10 @@ class KernelReleases():
         msg['Message-Id'] = '<%s.release-%s@kdist.linux.kernel.org>' % (
             datetime.date.strftime(datetime.datetime.now(), '%Y%m%d%H%M%S'), release)
         msg['X-Linux-Kernel-Version'] = release
-        msg['X-Linux-Kernel-Patch-URL'] = patch
         msg['X-Linux-Kernel-Full-URL'] = source
+
+        if patch is not None:
+            msg['X-Linux-Kernel-Patch-URL'] = patch
 
         s = smtplib.SMTP(smtp_server)
         s.sendmail('kdist@linux.kernel.org', [announce_list,], msg.as_string())
