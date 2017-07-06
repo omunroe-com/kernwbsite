@@ -257,22 +257,22 @@ class KernelReleases():
         if 'SMTP_SERVER' in os.environ.keys():
             smtp_server = os.environ['SMTP_SERVER']
 
-        body = ("Linux kernel version %s%s has been released. It is available from:\r\n" % (release, eol)
-                + "\r\n"
-                + "Full source:    %s" % source)
+        body = ( "Linux kernel version %s%s is now available:\r\n" % (release, eol)
+               + "\r\n"
+               + "Full source:    %s" % source)
 
         if patch is not None:
-            body += ("\r\n"
-                + "Patch:          %s" % patch)
+            body += ( "\r\n"
+                    + "Patch:          %s" % patch)
 
         if sign is not None:
-            body += ("\r\n"
-                + "PGP Signature:  %s" % sign)
+            body += ( "\r\n"
+                    + "PGP Signature:  %s" % sign)
 
         if diffview is not None:
-            body += ("\r\n\r\n"
-                + "You can view the summary of the changes at the following URL:\r\n"
-                + "%s\r\n" % diffview)
+            body += ( "\r\n\r\n"
+                    + "You can view the summary of the changes at the following URL:\r\n"
+                    + "%s\r\n\r\n" % diffview)
 
         msg = MIMEText(body)
         msg['Subject'] = "Linux kernel %s released" % release
