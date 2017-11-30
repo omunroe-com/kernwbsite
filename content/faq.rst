@@ -37,6 +37,14 @@ Please check the Releases_ page for more info.
 
 .. _Releases: |filename|releases.rst
 
+Why is an LTS kernel marked as "stable" on the front page?
+----------------------------------------------------------
+Long-term support ("LTS") kernels announced on the Releases_ page will
+be marked as "stable" on the front page if there are no other current
+stable kernel releases. This is done to avoid breaking automated parsers
+monitoring kernel.org with an expectation that there will always be a
+kernel release marked as "stable."
+
 Is there an RSS feed for the latest kernel version?
 ---------------------------------------------------
 Yes, and you can find it at https://www.kernel.org/feeds/kdist.xml.
