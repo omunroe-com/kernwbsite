@@ -49,6 +49,7 @@ PLUGINS = [releases]
 # Blogroll
 LINKS =  (
     ('Cgit', 'https://git.kernel.org/'),
+    ('Documentation', 'https://www.kernel.org/doc/html/latest/'),
     ('Wikis', 'https://www.wiki.kernel.org/'),
     ('Bugzilla', 'https://bugzilla.kernel.org/'),
     ('Patchwork', 'https://patchwork.kernel.org/'),
@@ -56,12 +57,11 @@ LINKS =  (
     ('Mirrors', 'https://mirrors.kernel.org/'),
     ('Linux.com', 'https://www.linux.com/'),
     ('Linux Foundation', 'http://www.linuxfoundation.org/'),
-    ('Kernel Planet', 'http://planet.kernel.org/'),
 )
 
 # Social widget
 SOCIAL = (
-    ('Linux on Google+', 'https://plus.google.com/+Linux/posts'),
+    ('Kernel Planet', 'http://planet.kernel.org/'),
 )
 
 THEME = './korgi'
