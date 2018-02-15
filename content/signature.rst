@@ -103,14 +103,14 @@ To make the "``WARNING``" message go away you can indicate that you
 choose to trust that key using TOFU::
 
     $ gpg2 --tofu-policy good 38DBBDC86092693E
-    $ gpg2 --trust-policy tofu --verify linux-4.6.6.tar.sign
+    $ gpg2 --trust-model tofu --verify linux-4.6.6.tar.sign
     gpg: Signature made Wed 10 Aug 2016 06:55:15 AM EDT
     gpg:                using RSA key 38DBBDC86092693E
     gpg: Good signature from "Greg Kroah-Hartman <gregkh@kernel.org>" [full]
     gpg: gregkh@kernel.org: Verified 1 signature in the past 53 seconds.  Encrypted
          0 messages.
 
-Note that you may have to pass "``--trust-policy tofu``" the first time
+Note that you may have to pass "``--trust-model tofu``" the first time
 you run the verify command, but it should not be necessary after that.
 
 Important fingerprints
