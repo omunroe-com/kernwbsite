@@ -64,8 +64,8 @@ To illustrate the verification process, let's use Linux 4.6.6 release as
 a walk-through example. First, use "``curl``" to download the release
 and the corresponding signature::
 
-    $ curl -O https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.xz
-    $ curl -O https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.sign
+    $ curl -OL https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.xz
+    $ curl -OL https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.6.tar.sign
 
 You will notice that the signature is made against the uncompressed
 version of the archive. This is done so there is only one signature
