@@ -26,7 +26,7 @@ Stable
     usually only a few bugfix kernel releases until next mainline kernel
     becomes available -- unless it is designated a "longterm maintenance
     kernel." Stable kernel updates are released on as-needed basis,
-    usually 2-3 a month.
+    usually once a week.
 
 Longterm
     There are usually several "longterm maintenance" kernel releases
