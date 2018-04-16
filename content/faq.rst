@@ -179,4 +179,4 @@ Corbet provides a broad forecast of what will likely be included into
 the next mainline release.
 
 .. _`linux-next`: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/
-.. _`Linux Weather Forecast`: http://www.linuxfoundation.org/news-media/lwf
+.. _`Linux Weather Forecast`: https://www.linux.com/news/2017/7/linux-weather-forecast
