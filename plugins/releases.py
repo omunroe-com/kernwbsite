@@ -276,10 +276,10 @@ class KernelReleases():
 
         msg = MIMEText(body)
         msg['Subject'] = "Linux kernel %s released" % release
-        msg['From'] = 'Linux Kernel Distribution System <kdist@linux.kernel.org>'
+        msg['From'] = 'Linux Kernel Distribution System <kdist@kernel.org>'
         msg['To'] = announce_list
         msg['Date'] = formatdate(localtime=True)
-        msg['Message-Id'] = '<%s.release-%s@kdist.linux.kernel.org>' % (
+        msg['Message-Id'] = '<%s.release-%s@kdist.kernel.org>' % (
             datetime.date.strftime(datetime.datetime.now(), '%Y%m%d%H%M%S'), release)
         msg['X-Linux-Kernel-Version'] = release
         msg['X-Linux-Kernel-Full-URL'] = source
@@ -288,7 +288,7 @@ class KernelReleases():
             msg['X-Linux-Kernel-Patch-URL'] = patch
 
         s = smtplib.SMTP(smtp_server)
-        s.sendmail('kdist@linux.kernel.org', [announce_list,], msg.as_string())
+        s.sendmail('kdist@kernel.org', [announce_list,], msg.as_string())
         s.quit()
 
     def generate_releases_json(self):
