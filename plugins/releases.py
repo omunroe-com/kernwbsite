@@ -413,29 +413,7 @@ class KernelReleases():
         fp.close()
 
     def _get_release_dir_by_version(self, version):
-        # some magic here to calculate where the source is
-        urlpath = 'pub/linux/kernel'
-
-        if version.find('3.') == 0:
-            # This is version 3.x, so will be in /v3.x/
-            urlpath += '/v3.x'
-
-        elif version.find('4.') == 0:
-            # When Linus feels like releasing a 4.x, it'll be in /v4.x/
-            urlpath += '/v4.x'
-
-        elif version.find('2.6') == 0:
-            # We're hardcoding ourselves here, but this will rarely change
-            urlpath += '/v2.6/longterm'
-
-            if version.find('2.6.32') == 0:
-                urlpath += '/v2.6.32'
-            else:
-                urlpath += '/v2.6.34'
-
-        if version.find('-rc') > 0:
-            # This is a testing kernel, so will be in /testing/
-            urlpath += '/testing'
+        urlpath = 'pub/linux/kernel/v%s.x' % version[0]
 
         return urlpath
 
