@@ -60,28 +60,17 @@ Under Linux/Unix, type ``date -u`` to get the current time in UTC.
 
 Can I get an account on kernel.org?
 -----------------------------------
-Kernel.org accounts are not given away very often, usually you need to
-be making some reasonable amount of contributions to the Linux kernel
-and have a good reason for wanting / needing an account. If you really
-feel that you should have an account please e-mail the following to
-helpdesk@kernel.org:
+Kernel.org accounts are usually reserved for subsystem maintainers or
+high-profile developers. It is absolutely not necessary to have an
+account on kernel.org to contribute to the development of the Linux
+kernel, unless you submit pull requests directly to Linus.
 
-- full name
-- desired username
-- email address where to forward your username@kernel.org mail
-- reason for requiring a kernel.org account
-- reference to kernel work you've done
-- PGP/GPG public key fingerprint (NOT your ssh key)
+If you are listed in the MAINTAINERS file or have reasons to believe you
+should have an account on kernel.org because of the amount of your
+contributions, please refer to the `accounts wiki page`_ for the
+procedure to follow.
 
-  * Key should be signed by as many kernel developers as you know
-  * Accounts will not be issued until key carries enough signatures
-  * Key and signatures must be available on public key servers
-
-The Kernel.org admin team will then review your request and let you know
-the decision.
-
-Please note that The Linux Kernel Organization, Inc. reserves the right
-to refuse service to anyone, for any reason.
+.. _`accounts wiki page`: https://korg.wiki.kernel.org/userdoc/accounts
 
 I have cool project X, can you guys mirror it for me?
 -----------------------------------------------------
