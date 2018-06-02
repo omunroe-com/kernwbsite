@@ -43,9 +43,7 @@ Longterm
     4.14     Greg Kroah-Hartman   2017-11-12   Jan, 2020
     4.9      Greg Kroah-Hartman   2016-12-11   Jan, 2019
     4.4      Greg Kroah-Hartman   2016-01-10   Feb, 2022
-    4.1      Sasha Levin          2015-06-21   May, 2018
     3.16     Ben Hutchings        2014-08-03   Apr, 2020
-    3.2      Ben Hutchings        2012-01-04   May, 2018
     ======== ==================== ============ ==================
 
 Distribution kernels
