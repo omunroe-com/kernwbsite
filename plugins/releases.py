@@ -152,7 +152,7 @@ class KernelReleases():
         for rel in stable:
             iseol = False
             for eolrel in EOL_KERNELS:
-                if rel[0].find(eolrel) == 1:
+                if rel[0].find(eolrel + '.') == 1:
                     iseol = True
                     break
 
@@ -170,7 +170,7 @@ class KernelReleases():
             if found is not None:
                 iseol = False
                 for eolrel in EOL_KERNELS:
-                    if found[0].find(eolrel) == 1:
+                    if found[0].find(eolrel + '.') == 1:
                         iseol = True
                         break
 
