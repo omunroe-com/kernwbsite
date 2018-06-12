@@ -56,6 +56,7 @@ class KernelReleases():
 
         self.gitsite = 'https://git.kernel.org'
         self.wwwsite = 'https://cdn.kernel.org'
+        self.checksite = 'https://mirrors.edge.kernel.org'
 
         self.reqs = requests.Session()
 
@@ -197,7 +198,8 @@ class KernelReleases():
         self.check_release_tracker()
 
     def check_url_exists(self, url):
-        r = self.reqs.head(url)
+        checkurl = url.replace(self.wwwsite, self.checksite)
+        r = self.reqs.head(checkurl)
         return r.status_code == 200
 
     def check_release_tracker(self):
