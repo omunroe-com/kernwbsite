@@ -1,0 +1,76 @@
+LKML archives on lore.kernel.org
+================================
+
+:category: Site news
+:slug: lore
+
+You may now access the Linux Kernel Mailing List (LKML) via our new
+list archive system, hosted at lore.kernel.org_. The software managing
+the archive is called `Public Inbox`_ and offers the following features:
+
+- Fast, searchable web archives
+- Atom feeds per list or per individual thread
+- Downloadable mbox archives to make replying easy
+- Git-backed archival mechanism you can clone and pull
+- Read-only nntp gateway
+
+We collected LKML archives going as far back as 1998, and they are now
+all available to anyone via a simple git clone. We would like to extend
+our thanks to everyone who helped in this effort by donating their
+personal archives.
+
+Obtaining full LKML archives
+----------------------------
+Git clone URLs are provided at the bottom of each page. Note, that due
+to its volume, the LKML archive is sharded into multiple repositories,
+each roughly 1GB in size. In addition to cloning from lore.kernel.org,
+you may also access these repositories on git.kernel.org_.
+
+Dedicated LKML patchwork
+------------------------
+
+In addition to Public Inbox, we are also offering a dedicated read-only
+patchwork_ instance for LKML. Patchwork makes it easy to see the
+lifecycle of each patch as it makes its way from the initial submission,
+through peer review, and to final acceptance into mainline. You may
+access it at:
+
+- `lore.kernel.org/patchwork`_
+
+The LKML project hosted at patchwork.kernel.org_ will be removed to make
+it easier for developers to manage the projects they actually use for
+patch tracking, as the sheer volume of untracked patches on LKML was
+causing significant performance slowdowns.
+
+Linking to LKML discussions
+---------------------------
+
+If you need to reference a mailing list discussion inside code comments
+or in a git commit message, the preferred way is to use the redirect
+service:
+
+1. Locate the Message-ID of the email you would like to reference.
+2. To link to it, use the following scheme:
+   `lkml.kernel.org/r/[message-id]`
+
+The `/r/` redirect will use the Public Inbox archive to display the message.
+In addition, it allows others to access the message on other archival
+systems, by substituting `/r/` with another letter:
+
+.. table:: Redirect URLs
+
+    ======== ====================
+    Shortcut Archive Provider
+    ======== ====================
+    /r/      lore.kernel.org
+    /m/      marc.info
+    /g/      mail-archive.com
+    ======== ====================
+
+
+.. _lore.kernel.org: https://lore.kernel.org/lkml/
+.. _`Public Inbox`: https://public-inbox.org/design_notes.html
+.. _patchwork: http://jk.ozlabs.org/projects/patchwork/
+.. _`lore.kernel.org/patchwork`: https://lore.kernel.org/patchwork/
+.. _patchwork.kernel.org: https://patchwork.kernel.org/
+.. _git.kernel.org: https://git.kernel.org/pub/scm/public-inbox/vger.kernel.org/lkml/
