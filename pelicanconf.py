@@ -41,7 +41,7 @@ else:
     PELICAN_STATEDIR = '/var/lib/mirror'
 
 GIT_MAINLINE = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/torvalds/linux.git')
-GIT_STABLE   = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/stable/linux-stable.git')
+GIT_STABLE   = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/stable/linux.git')
 GIT_NEXT     = os.path.join(GIT_REPOS, 'pub/scm/linux/kernel/git/next/linux-next.git')
 
 RELEASE_TRACKER = os.path.join(PELICAN_STATEDIR, 'release-tracker.json')
