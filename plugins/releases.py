@@ -83,7 +83,7 @@ class KernelReleases():
         if mainline_rc[1] < mainline_rel[1]:
             mainline_rc = None
 
-        # Move on to the linux-stable repo
+        # Move on to the stable repo
         repo = Repo(GIT_STABLE)
         # ignore any tags older than 12 months
         cutoff = time.time() - 31536000
@@ -556,7 +556,7 @@ class KernelReleases():
             if label.find('stable') == 0 or label.find('longterm') == 0:
                 dirpath = self._get_release_dir_by_version(release)
                 changelog = '%s/%s/ChangeLog-%s' % (self.wwwsite, dirpath, release)
-                cgitpath = 'stable/linux-stable'
+                cgitpath = 'stable'
                 gitweb = '%s/%s/h/v%s' % (self.gitsite, cgitpath, release)
 
                 # incr patches are named incr/3.5.(X-1)-(X).xz

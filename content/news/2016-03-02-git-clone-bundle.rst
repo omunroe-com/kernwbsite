@@ -16,7 +16,7 @@ Here is how you would do it.
    downloads. If your connection resets, just rerun the same command while
    in the same directory, and it will pick up where it left off::
 
-     wget -c https://cdn.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/clone.bundle
+     wget -c https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/clone.bundle
 
 2. Once the download is completed, verify that the bundle has downloaded
    correctly::
