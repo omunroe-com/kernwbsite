@@ -1,7 +1,8 @@
-Minor changes to tarball release format
-=======================================
+Minor changes to kernel tarball releases
+========================================
 
 :category: Site news
+:slug: minor-changes-to-tarball-release-format
 
 We'd like to announce several small changes to the way Linux tarballs
 are produced.
