@@ -113,6 +113,18 @@ choose to trust that key using TOFU::
 Note that you may have to pass "``--trust-model tofu``" the first time
 you run the verify command, but it should not be necessary after that.
 
+The scripted version
+~~~~~~~~~~~~~~~~~~~~
+If you need to perform this task in an automated environment or simply
+prefer a more convenient tool, you can use the following helper script
+to properly download and verify Linux kernel tarballs:
+
+ - get-verified-tarball_
+
+Please review the script before adopting it for your needs.
+
+.. _get-verified-tarball: https://git.kernel.org/pub/scm/linux/kernel/git/mricon/korg-helpers.git/tree/get-verified-tarball
+
 Important fingerprints
 ----------------------
 Here are key fingerprints for Linus Torvalds and Greg Kroah-Hartman, who
