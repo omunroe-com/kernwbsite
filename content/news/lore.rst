@@ -1,7 +1,7 @@
 List archives on lore.kernel.org
 ================================
 
-:category: About
+:category: Site news
 :slug: lore
 
 You may access the archives of many Linux development mailing lists on
