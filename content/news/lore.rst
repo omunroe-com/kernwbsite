@@ -12,6 +12,7 @@ back several decades.
 
     ============== =======================================
     LKML           https://lore.kernel.org/lkml/
+    linux-btrfs    https://lore.kernel.org/linux-btrfs/
     linux-pci      https://lore.kernel.org/linux-pci/
     linux-wireless https://lore.kernel.org/linux-wireless/
     wireguard      https://lore.kernel.org/wireguard/
