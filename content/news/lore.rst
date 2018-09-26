@@ -10,13 +10,14 @@ back several decades.
 
 .. table:: Currently hosted lists
 
-    ============== =======================================
-    LKML           https://lore.kernel.org/lkml/
-    linux-btrfs    https://lore.kernel.org/linux-btrfs/
-    linux-pci      https://lore.kernel.org/linux-pci/
-    linux-wireless https://lore.kernel.org/linux-wireless/
-    wireguard      https://lore.kernel.org/wireguard/
-    ============== =======================================
+    =============== ========================================
+    LKML            https://lore.kernel.org/lkml/
+    linux-bluetooth https://lore.kernel.org/linux-bluetooth/
+    linux-btrfs     https://lore.kernel.org/linux-btrfs/
+    linux-pci       https://lore.kernel.org/linux-pci/
+    linux-wireless  https://lore.kernel.org/linux-wireless/
+    wireguard       https://lore.kernel.org/wireguard/
+    =============== ========================================
 
 If you would like to suggest another kernel development mailing list to
 be included in this list, please follow the instructions on the
