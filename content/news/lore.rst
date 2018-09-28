@@ -14,8 +14,10 @@ back several decades.
     LKML            https://lore.kernel.org/lkml/
     linux-bluetooth https://lore.kernel.org/linux-bluetooth/
     linux-btrfs     https://lore.kernel.org/linux-btrfs/
+    linux-clk       https://lore.kernel.org/linux-clk/
     linux-pci       https://lore.kernel.org/linux-pci/
     linux-wireless  https://lore.kernel.org/linux-wireless/
+    linuxppc-dev    https://lore.kernel.org/linuxppc-dev/
     wireguard       https://lore.kernel.org/wireguard/
     =============== ========================================
 
