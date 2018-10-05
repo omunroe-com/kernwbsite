@@ -21,6 +21,9 @@ back several decades.
     linux-security-module https://lore.kernel.org/linux-security-module/
     linux-wireless        https://lore.kernel.org/linux-wireless/
     linuxppc-dev          https://lore.kernel.org/linuxppc-dev/
+    selinux               https://lore.kernel.org/selinux/
+    selinux-refpolicy     https://lore.kernel.org/selinux-refpolicy/
+    util-linux            https://lore.kernel.org/util-linux/
     wireguard             https://lore.kernel.org/wireguard/
     ===================== ==============================================
 
