@@ -8,7 +8,7 @@ Code of Conduct
 Code of Conduct
 ---------------
 
-The Linux kernel community operates a `Code of Conduct` based on the
+The Linux kernel community operates a `Code of Conduct`_ based on the
 `Contributor Covenant Code of Conduct`_.
 
 .. _`Code of Conduct`: https://www.kernel.org/doc/html/latest/process/code-of-conduct.html
