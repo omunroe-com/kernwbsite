@@ -17,6 +17,7 @@ back several decades.
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
     linux-clk             https://lore.kernel.org/linux-clk/
     linux-integrity       https://lore.kernel.org/linux-integrity/
+    linux-nfs             https://lore.kernel.org/linux-nfs/
     linux-pci             https://lore.kernel.org/linux-pci/
     linux-rtc             https://lore.kernel.org/linux-rtc/
     linux-security-module https://lore.kernel.org/linux-security-module/
