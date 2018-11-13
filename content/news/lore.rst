@@ -13,6 +13,8 @@ back several decades.
     ===================== ==============================================
     LKML                  https://lore.kernel.org/lkml/
     backports             https://lore.kernel.org/backports/
+    cocci                 https://lore.kernel.org/cocci/
+    linux-block           https://lore.kernel.org/linux-block/
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
     linux-clk             https://lore.kernel.org/linux-clk/
