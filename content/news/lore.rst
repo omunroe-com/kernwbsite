@@ -24,6 +24,7 @@ back several decades.
     linux-pci             https://lore.kernel.org/linux-pci/
     linux-rtc             https://lore.kernel.org/linux-rtc/
     linux-security-module https://lore.kernel.org/linux-security-module/
+    linux-sgx             https://lore.kernel.org/linux-sgx/
     linux-wireless        https://lore.kernel.org/linux-wireless/
     linuxppc-dev          https://lore.kernel.org/linuxppc-dev/
     selinux               https://lore.kernel.org/selinux/
