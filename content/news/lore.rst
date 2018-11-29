@@ -14,6 +14,7 @@ back several decades.
     LKML                  https://lore.kernel.org/lkml/
     backports             https://lore.kernel.org/backports/
     cocci                 https://lore.kernel.org/cocci/
+    linux-arm-kernel      https://lore.kernel.org/linux-arm-kernel/
     linux-block           https://lore.kernel.org/linux-block/
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
@@ -22,6 +23,7 @@ back several decades.
     linux-nfs             https://lore.kernel.org/linux-nfs/
     linux-parisc          https://lore.kernel.org/linux-parisc/
     linux-pci             https://lore.kernel.org/linux-pci/
+    linux-riscv           https://lore.kernel.org/linux-riscv/
     linux-rtc             https://lore.kernel.org/linux-rtc/
     linux-security-module https://lore.kernel.org/linux-security-module/
     linux-sgx             https://lore.kernel.org/linux-sgx/
