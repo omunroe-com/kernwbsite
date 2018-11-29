@@ -14,6 +14,7 @@ back several decades.
     LKML                  https://lore.kernel.org/lkml/
     backports             https://lore.kernel.org/backports/
     cocci                 https://lore.kernel.org/cocci/
+    kernelnewbies         https://lore.kernel.org/kernelnewbies/
     linux-arm-kernel      https://lore.kernel.org/linux-arm-kernel/
     linux-block           https://lore.kernel.org/linux-block/
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
