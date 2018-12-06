@@ -15,12 +15,17 @@ back several decades.
     backports             https://lore.kernel.org/backports/
     cocci                 https://lore.kernel.org/cocci/
     kernelnewbies         https://lore.kernel.org/kernelnewbies/
+    linux-amlogic         https://lore.kernel.org/linux-amlogic/
     linux-arm-kernel      https://lore.kernel.org/linux-arm-kernel/
     linux-block           https://lore.kernel.org/linux-block/
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
     linux-clk             https://lore.kernel.org/linux-clk/
+    linux-iio             https://lore.kernel.org/linux-iio/
     linux-integrity       https://lore.kernel.org/linux-integrity/
+    linux-media           https://lore.kernel.org/linux-media/
+    linux-mips            https://lore.kernel.org/linux-mips/
+    linux-modules         https://lore.kernel.org/linux-modules/
     linux-nfs             https://lore.kernel.org/linux-nfs/
     linux-parisc          https://lore.kernel.org/linux-parisc/
     linux-pci             https://lore.kernel.org/linux-pci/
