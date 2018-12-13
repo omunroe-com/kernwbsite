@@ -21,8 +21,8 @@ the bot will not be able to recognize it as the same patch. Similarly,
 for series of multiple patches, the bot must be able to successfully
 match all patches in the series in order for the notification to go out.
 
-If you are using ``git-format-patch``, it is best add the special header
-instead of using the Cc notification address, so as to avoid any
+If you are using ``git-format-patch``, it is best to add the special
+header instead of using the Cc notification address, so as to avoid any
 unnecessary email traffic::
 
     --add-header="X-Patchwork-Bot: notify"
