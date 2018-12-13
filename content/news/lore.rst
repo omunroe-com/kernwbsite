@@ -21,6 +21,7 @@ back several decades.
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
     linux-clk             https://lore.kernel.org/linux-clk/
+    linux-i3c             https://lore.kernel.org/linux-i3c/
     linux-iio             https://lore.kernel.org/linux-iio/
     linux-integrity       https://lore.kernel.org/linux-integrity/
     linux-media           https://lore.kernel.org/linux-media/
@@ -30,6 +31,7 @@ back several decades.
     linux-parisc          https://lore.kernel.org/linux-parisc/
     linux-pci             https://lore.kernel.org/linux-pci/
     linux-riscv           https://lore.kernel.org/linux-riscv/
+    linux-renesas-soc     https://lore.kernel.org/linux-renesas-soc/
     linux-rtc             https://lore.kernel.org/linux-rtc/
     linux-security-module https://lore.kernel.org/linux-security-module/
     linux-sgx             https://lore.kernel.org/linux-sgx/
