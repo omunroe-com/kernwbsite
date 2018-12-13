@@ -3,6 +3,7 @@ List archives on lore.kernel.org
 
 :category: Site news
 :slug: lore
+:date: 2018-12-12
 
 You may access the archives of many Linux development mailing lists on
 lore.kernel.org_. Most of them include a full archive of messages going
