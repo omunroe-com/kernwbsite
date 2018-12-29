@@ -40,6 +40,7 @@ back several decades.
     linuxppc-dev          https://lore.kernel.org/linuxppc-dev/
     selinux               https://lore.kernel.org/selinux/
     selinux-refpolicy     https://lore.kernel.org/selinux-refpolicy/
+    stable                https://lore.kernel.org/stable/
     util-linux            https://lore.kernel.org/util-linux/
     wireguard             https://lore.kernel.org/wireguard/
     ===================== ==============================================
