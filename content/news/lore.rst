@@ -22,6 +22,7 @@ back several decades.
     linux-bluetooth       https://lore.kernel.org/linux-bluetooth/
     linux-btrfs           https://lore.kernel.org/linux-btrfs/
     linux-clk             https://lore.kernel.org/linux-clk/
+    linux-hwmon           https://lore.kernel.org/linux-hwmon/
     linux-i3c             https://lore.kernel.org/linux-i3c/
     linux-iio             https://lore.kernel.org/linux-iio/
     linux-integrity       https://lore.kernel.org/linux-integrity/
@@ -36,6 +37,7 @@ back several decades.
     linux-rtc             https://lore.kernel.org/linux-rtc/
     linux-security-module https://lore.kernel.org/linux-security-module/
     linux-sgx             https://lore.kernel.org/linux-sgx/
+    linux-watchdog        https://lore.kernel.org/linux-watchdog/
     linux-wireless        https://lore.kernel.org/linux-wireless/
     linuxppc-dev          https://lore.kernel.org/linuxppc-dev/
     selinux               https://lore.kernel.org/selinux/
