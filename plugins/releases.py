@@ -69,6 +69,8 @@ class KernelReleases():
         LONGTERM_KERNELS = settings.get('LONGTERM_KERNELS')
         EOL_KERNELS = settings.get('EOL_KERNELS')
 
+        self.MAJOR_JUMPS = settings.get('MAJOR_JUMPS')
+
         self.release_tracker = settings.get('RELEASE_TRACKER')
 
         repo = Repo(GIT_MAINLINE)
@@ -475,7 +477,11 @@ class KernelReleases():
                         incremental = '.'.join(newbits)
                     # Now arrive at mainline
                     if mainlbit == 0:
-                        # We're looking at 4.0-rcX, then. Cowardly bail out with only incremental
+                        # We're looking at X.0-rcX. Use the MAJOR_JUMPS mapping
+                        if bits[0] in self.MAJOR_JUMPS:
+                            return self.MAJOR_JUMPS[bits[0]], incremental
+                        # Linus doesn't pre-announce major jumps...
+                        # so just return None until we add it to the mapping.
                         return None, incremental
                     prevbit = str(mainlbit - 1)
                     newbits = bits[:-1] + [prevbit]
@@ -490,8 +496,9 @@ class KernelReleases():
             try:
                 lastbit = int(bits.pop(-1))
                 if lastbit == 0:
-                    # We can't really figure out what the previous release was based on this info, so
-                    # we cowardly pretend it didn't happen
+                    # Use MAJOR_JUMPS mapping again
+                    if bits[0] in self.MAJOR_JUMPS:
+                        return self.MAJOR_JUMPS[bits[0]], None
                     return None, None
 
                 prevbit = str(lastbit - 1)
@@ -500,7 +507,7 @@ class KernelReleases():
             except ValueError:
                 # Not sure what happened, but let's pretend it didn't work
                 return None, None
-            
+
             return mainline, incremental
 
         # Not a mainline kernel, so a simpler logic

@@ -25,11 +25,22 @@ import sys
 sys.path.append('./')
 from plugins import releases
 
+# NB: Don't add a kernel to longterm if it's the only stable kernel currently
+#     listed on www.kernel.org. This will break people's scripts, so we don't
+#     support doing it. Wait till there's an x.x.1 of the next stable branch.
 LONGTERM_KERNELS = ('4.19', '4.14', '4.9', '4.4', '4.1', '3.18', '3.16', '3.10', '3.2')
 EOL_KERNELS = ('3.2', '3.4', '3.10', '3.12', '3.14', '3.18', '3.19',
                '4.0', '4.1', '4.2', '4.3', '4.5', '4.6', '4.7', '4.8',
                '4.10', '4.11', '4.12', '4.13', '4.15', '4.16', '4.17',
                '4.18')
+
+# Continuity for major version jumps
+# maj_rel: prev_mainline
+MAJOR_JUMPS = {
+               '3': '2.6.39',
+               '4': '3.19',
+               '5': '4.20',
+              }
 
 if 'GIT_REPOS' in os.environ.keys():
     GIT_REPOS = os.environ['GIT_REPOS']
