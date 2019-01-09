@@ -181,6 +181,9 @@ class KernelReleases():
 
                 releases.append(self.make_release_line(found, 'longterm', iseol))
 
+        # sort everything by version number
+        releases = sorted(releases, key=lambda x: StrictVersion(x[0][1:]), reverse=True)
+
         # now find latest tag in linux-next
         repo = Repo(GIT_NEXT)
         tagrefs = self.get_tagref_list(repo, cutoff)
